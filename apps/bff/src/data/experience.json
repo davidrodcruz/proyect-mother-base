@@ -1,0 +1,156 @@
+[
+  {
+    "id": "exp-001",
+    "company": "Stori",
+    "role": "Sr. SDET (Quality Architecture & Tooling)",
+    "period": {
+      "start": "2025-01",
+      "end": null
+    },
+    "location": "Mexico City, Mexico",
+    "responsibilities": [
+      "Defined and executed the 'Testing Trophy' architectural standard, driving organizational shift from brittle E2E-heavy validation to scalable Unit → Integration/Contract → E2E testing models",
+      "Architected an LLM-powered Agentic Platform using MCP-based agents to automate testing lifecycle across multi-language codebases (Go, Python, JS), driving autonomy across 43+ engineering squads",
+      "Engineered enterprise-grade Contract Testing infrastructure (Pact Community) on AWS with custom database layer to map dependencies and replicate premium PactFlow features",
+      "Developed 7 specialized GenAI Agents for automated contract compliance: Discovery, Generation, and CI/CD",
+      "Built 360° Quality & Observability Platform integrating AI test generation, CI execution, and custom dashboard (SonarCloud/GitHub APIs) to monitor coverage trends across 1,300+ microservices",
+      "Led Zero-to-coverage enablement initiative, coaching engineering squads with no testing background to achieve 80-100% code coverage"
+    ],
+    "technologies": [
+      "Python",
+      "Go",
+      "JavaScript",
+      "AWS ECS",
+      "Pact",
+      "LLM/MCP",
+      "GitHub Actions",
+      "SonarCloud",
+      "Ollama"
+    ],
+    "achievements": [
+      "80-100% code coverage across 43+ engineering squads",
+      "1,300+ microservices monitored",
+      "7 GenAI Agents deployed for contract compliance"
+    ]
+  },
+  {
+    "id": "exp-002",
+    "company": "Stori",
+    "role": "Sr. Software QA Engineer",
+    "period": {
+      "start": "2024-08",
+      "end": "2025-01"
+    },
+    "location": "Mexico City, Mexico",
+    "responsibilities": [
+      "Led backend test automation standardization initiative across 7+ engineering squads, establishing reusable BDD patterns and framework architecture",
+      "Scaled AWS ECS distributed testing architecture (Python/Behave), reducing release cycles by 90%, improving defect detection by 70%, and catching 50%+ of bugs autonomously pre-code review",
+      "Defined quality KPIs and automation coverage targets at team level, creating data-driven quality baselines"
+    ],
+    "technologies": [
+      "Python",
+      "Behave",
+      "AWS ECS",
+      "BDD",
+      "Jenkins"
+    ],
+    "achievements": [
+      "90% reduction in release cycle time",
+      "70% improvement in defect detection",
+      "50%+ bugs caught autonomously pre-code review"
+    ]
+  },
+  {
+    "id": "exp-003",
+    "company": "Stori",
+    "role": "Mid Software QA Engineer",
+    "period": {
+      "start": "2023-01",
+      "end": "2024-08"
+    },
+    "location": "Mexico City, Mexico",
+    "responsibilities": [
+      "Implemented mobile test automation framework using Appium for Android and iOS applications",
+      "Designed risk-based test strategies ensuring comprehensive coverage of business-critical and regulatory compliance scenarios",
+      "Executed manual and exploratory testing for mobile releases across iOS and Android platforms"
+    ],
+    "technologies": [
+      "Appium",
+      "Python",
+      "iOS",
+      "Android",
+      "Postman"
+    ],
+    "achievements": [
+      "Mobile automation framework implemented",
+      "Risk-based test strategy designed"
+    ]
+  },
+  {
+    "id": "exp-004",
+    "company": "Stori",
+    "role": "Jr. Software QA Engineer",
+    "period": {
+      "start": "2022-01",
+      "end": "2023-01"
+    },
+    "location": "Mexico City, Mexico",
+    "responsibilities": [
+      "Executed manual and exploratory testing for iOS and Android apps, ensuring production stability across major release cycles",
+      "Collaborated with developers to identify defects early in the SDLC, using Jira for systematic bug tracking and root cause analysis"
+    ],
+    "technologies": [
+      "Jira",
+      "Postman",
+      "iOS",
+      "Android"
+    ],
+    "achievements": [
+      "Production stability maintained across major releases"
+    ]
+  },
+  {
+    "id": "exp-005",
+    "company": "Titanium Solutions",
+    "role": "Software QA Engineer (API Automation)",
+    "period": {
+      "start": "2021-06",
+      "end": "2022-01"
+    },
+    "location": "Aguascalientes, Mexico",
+    "responsibilities": [
+      "Maintained and extended Java-based API automation framework (Rest Assured) for backend service validation",
+      "Supported CI integration and regression test execution across microservices"
+    ],
+    "technologies": [
+      "Java",
+      "Rest Assured",
+      "API Testing",
+      "Jenkins"
+    ],
+    "achievements": [
+      "API automation framework maintained and extended"
+    ]
+  },
+  {
+    "id": "exp-006",
+    "company": "Local Government Office",
+    "role": "Software Developer and Tester",
+    "period": {
+      "start": "2019-08",
+      "end": "2020-02"
+    },
+    "location": "Calera, Zac, Mexico",
+    "responsibilities": [
+      "Developed and tested government software systems",
+      "Gained foundational experience in both software development and quality assurance practices"
+    ],
+    "technologies": [
+      "Software Development",
+      "Testing"
+    ],
+    "achievements": [
+      "Foundational development and QA experience"
+    ]
+  }
+]

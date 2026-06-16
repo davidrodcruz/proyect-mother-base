@@ -1,0 +1,221 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Badge from '../../components/atoms/Badge.astro';
+import Button from '../../components/atoms/Button.astro';
+
+const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:3000';
+
+export async function getStaticPaths() {
+  try {
+    const res = await fetch(`${API_URL}/api/v1/projects`);
+    const projects = await res.json();
+    return projects.map((project: any) => ({
+      params: { id: project.id },
+    }));
+  } catch (error) {
+    console.error('Failed to fetch projects for static paths:', error);
+    return [
+      { params: { id: 'foxhound' } },
+      { params: { id: 'patriot' } },
+    ];
+  }
+}
+
+const { id } = Astro.params;
+
+let project = null;
+let status = null;
+
+try {
+  const projectRes = await fetch(`${API_URL}/api/v1/projects/${id}`);
+  if (projectRes.ok) {
+    project = await projectRes.json();
+  }
+
+  const statusRes = await fetch(`${API_URL}/api/v1/projects/${id}/status`);
+  if (statusRes.ok) {
+    status = await statusRes.json();
+  }
+} catch (error) {
+  console.error('Failed to fetch project:', error);
+}
+---
+
+<Layout title={project?.name || 'Project Not Found'}>
+  {project ? (
+    <div class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 relative">
+      <div class="absolute inset-0 grid-pattern opacity-30" />
+      
+      <div class="max-w-4xl mx-auto relative z-10">
+        {/* Back link */}
+        <a href="/#projects" class="inline-flex items-center gap-2 text-meta hover:text-accent mb-8 transition-colors font-heading text-sm tracking-wider uppercase">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6"/>
+          </svg>
+          Back to Mother Base
+        </a>
+
+        {/* Header */}
+        <div class="flex items-start justify-between mb-8">
+          <div>
+            <span class="text-meta text-sm tracking-[0.3em] uppercase block mb-2 font-heading">Framework Detail</span>
+            <h1 class="font-heading text-4xl md:text-5xl font-bold text-headline mb-2 phosphor-glow">
+              {project.name}
+            </h1>
+            <p class="text-xl text-body">{project.subtitle}</p>
+          </div>
+          <div
+            class="w-16 h-16 rounded-xl flex items-center justify-center hud-border"
+            style={`border-color: ${project.color}40; box-shadow: 0 0 15px ${project.color}20`}
+          >
+            <span class="font-heading font-bold text-2xl" style={`color: ${project.color}`}>
+              {project.name[0]}
+            </span>
+          </div>
+        </div>
+
+        {/* Gateway Status */}
+        {status && (
+          <div class={`p-4 rounded-lg mb-8 ${status.available ? 'bg-meta/10 border border-meta/30' : 'bg-card/80 border border-border/30'}`}>
+            <div class="flex items-center gap-3">
+              <div class={`w-2.5 h-2.5 rounded-full ${status.available ? 'bg-meta shadow-[0_0_10px_rgba(88,142,119,0.5)]' : 'bg-border/50'}`} />
+              <span class={`font-heading text-sm tracking-wider uppercase ${status.available ? 'text-meta' : 'text-meta/50'}`}>
+                Gateway {status.available ? 'Online' : 'Offline'}
+              </span>
+            </div>
+          </div>
+        )}
+
+        {/* Description */}
+        <div className="mb-8">
+          <p class="text-body text-lg leading-relaxed">{project.description}</p>
+        </div>
+
+        {/* Technologies */}
+        <div class="mb-8">
+          <h2 class="font-heading text-xl font-bold text-headline mb-4 flex items-center gap-2">
+            <span class="text-meta">//</span> Tech Stack
+          </h2>
+          <div class="flex flex-wrap gap-2">
+            {project.technologies.map((tech: string) => (
+              <Badge text={tech} variant="meta" size="md" />
+            ))}
+          </div>
+        </div>
+
+        {/* Features */}
+        <div class="mb-8">
+          <h2 class="font-heading text-xl font-bold text-headline mb-4 flex items-center gap-2">
+            <span class="text-meta">//</span> Features
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {project.features.map((feature: any) => (
+              <div class="p-4 bg-section rounded-lg hud-border">
+                <h3 class="font-heading text-lg font-semibold text-headline mb-2">{feature.name}</h3>
+                <p class="text-body text-sm">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Architecture */}
+        <div class="mb-8">
+          <h2 class="font-heading text-xl font-bold text-headline mb-4 flex items-center gap-2">
+            <span class="text-meta">//</span> Architecture
+          </h2>
+          <div class="p-4 bg-section rounded-lg hud-border">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <span class="text-meta text-xs uppercase tracking-wider font-heading">Pattern</span>
+                <p class="text-body font-heading mt-1">{project.architecture.pattern}</p>
+              </div>
+              <div>
+                <span class="text-meta text-xs uppercase tracking-wider font-heading">Entry Point</span>
+                <p class="text-body font-heading mt-1">{project.architecture.entry_point}</p>
+              </div>
+              <div>
+                <span class="text-meta text-xs uppercase tracking-wider font-heading">Config</span>
+                <p class="text-body font-heading mt-1">{project.architecture.config}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Stats */}
+        <div class="mb-8">
+          <h2 class="font-heading text-xl font-bold text-headline mb-4 flex items-center gap-2">
+            <span class="text-meta">//</span> Stats
+          </h2>
+          <div class="grid grid-cols-3 gap-4">
+            <div class="p-4 bg-section rounded-lg hud-border text-center">
+              <div class="text-2xl font-heading font-bold text-accent">{project.stats.tests_executed}</div>
+              <div class="text-meta text-xs uppercase tracking-wider">Tests Executed</div>
+            </div>
+            <div class="p-4 bg-section rounded-lg hud-border text-center">
+              <div class="text-2xl font-heading font-bold text-accent">{project.stats.coverage}</div>
+              <div class="text-meta text-xs uppercase tracking-wider">Coverage</div>
+            </div>
+            <div class="p-4 bg-section rounded-lg hud-border text-center">
+              <div class="text-2xl font-heading font-bold text-accent">{project.stats.frameworks_tested}</div>
+              <div class="text-meta text-xs uppercase tracking-wider">Frameworks</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Action buttons */}
+        <div class="flex gap-4">
+          <Button text="View on GitHub" href={project.links.github} variant="primary" size="lg" target="_blank" />
+          <Button text="Documentation" href={project.links.docs} variant="secondary" size="lg" target="_blank" />
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div class="min-h-screen flex items-center justify-center relative overflow-hidden">
+      <div class="absolute inset-0 grid-pattern" />
+      
+      <div class="relative z-10 max-w-2xl mx-auto px-4 text-center">
+        {/* Glitch title */}
+        <div class="mb-8">
+          <h1 
+            class="font-heading text-5xl md:text-6xl font-bold text-headline phosphor-glow-lg glitch-intense"
+            data-text="404"
+          >
+            404
+          </h1>
+        </div>
+
+        {/* Static noise effect */}
+        <div class="mb-8 flex justify-center">
+          <div class="w-64 h-1 bg-gradient-to-r from-transparent via-accent/50 to-transparent animate-pulse" />
+        </div>
+
+        {/* Random message */}
+        <div id="not-found-message" class="mb-12">
+          <p id="message-text" class="font-heading text-lg md:text-xl text-body leading-relaxed"></p>
+        </div>
+
+        {/* Tactical border */}
+        <div class="mb-8 flex justify-center gap-2">
+          <div class="w-2 h-2 bg-meta rounded-full animate-pulse" />
+          <div class="w-2 h-2 bg-accent rounded-full animate-pulse" style="animation-delay: 0.2s" />
+          <div class="w-2 h-2 bg-meta rounded-full animate-pulse" style="animation-delay: 0.4s" />
+        </div>
+
+        <Button text="Back to Mother Base" href="/" variant="primary" size="lg" />
+      </div>
+    </div>
+  )}
+</Layout>
+
+<script>
+  const messages = [
+    "Mother Base R&D Team is currently developing this equipment. Please wait for the next supply drop.",
+    "Building the ultimate automation weapon... I'm going to keep you waiting, huh? ;)"
+  ];
+  
+  const messageElement = document.getElementById('message-text');
+  if (messageElement) {
+    const randomIndex = Math.floor(Math.random() * messages.length);
+    messageElement.textContent = messages[randomIndex];
+  }
+</script>

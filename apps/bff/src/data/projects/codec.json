@@ -1,0 +1,42 @@
+{
+  "id": "codec",
+  "name": "CODEC",
+  "subtitle": "Contract Validation Cycle",
+  "type": "cvc",
+  "description": "Decode integration contracts between microservices. Ensure API compatibility across services.",
+  "icon": "/icons/codec.svg",
+  "color": "#10B981",
+  "technologies": ["Python", "Pact", "Behave", "JSON Schema"],
+  "features": [
+    {
+      "name": "Consumer-Driven Contracts",
+      "description": "Validate provider responses against consumer expectations"
+    },
+    {
+      "name": "Contract Versioning",
+      "description": "Track contract changes over time"
+    },
+    {
+      "name": "Breaking Change Detection",
+      "description": "Identify breaking changes before deployment"
+    },
+    {
+      "name": "Pact Integration",
+      "description": "Industry-standard contract testing"
+    }
+  ],
+  "architecture": {
+    "pattern": "Consumer-Provider",
+    "entry_point": "run_tests.py",
+    "config": "contracts.yaml"
+  },
+  "stats": {
+    "tests_executed": "2,000+",
+    "coverage": "98%",
+    "frameworks_tested": 10
+  },
+  "links": {
+    "github": "https://github.com/davo/codec",
+    "docs": "https://codec.davo.dev"
+  }
+}

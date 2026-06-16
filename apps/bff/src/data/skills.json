@@ -1,0 +1,89 @@
+{
+  "categories": [
+    {
+      "name": "Quality Engineering",
+      "items": [
+        { "name": "Testing Trophy Model", "level": "expert", "years": 5 },
+        { "name": "Test Coverage Strategy", "level": "expert", "years": 5 },
+        { "name": "Testing Governance", "level": "expert", "years": 5 },
+        { "name": "Quality Architecture", "level": "expert", "years": 5 },
+        { "name": "Shift-Left Testing", "level": "expert", "years": 5 },
+        { "name": "Developer Enablement", "level": "expert", "years": 5 },
+        { "name": "PACT Contract Testing CDCT", "level": "expert", "years": 3 }
+      ]
+    },
+    {
+      "name": "Programming Languages",
+      "items": [
+        { "name": "Python (Pytest, Behave, Requests)", "level": "expert", "years": 5 },
+        { "name": "SQL", "level": "advanced", "years": 5 },
+        { "name": "Bash Scripting", "level": "intermediate", "years": 5 },
+        { "name": "Java (Rest Assured)", "level": "intermediate", "years": 2 },
+        { "name": "Go", "level": "beginner", "years": 1 },
+        { "name": "C#", "level": "beginner", "years": 1 }
+      ]
+    },
+    {
+      "name": "Testing Frameworks",
+      "items": [
+        { "name": "Pytest", "level": "expert", "years": 5 },
+        { "name": "Behave (BDD)", "level": "expert", "years": 5 },
+        { "name": "Playwright", "level": "advanced", "years": 3 },
+        { "name": "Selenium", "level": "advanced", "years": 3 },
+        { "name": "Appium", "level": "advanced", "years": 3 },
+        { "name": "API Testing", "level": "expert", "years": 5 },
+        { "name": "Integration Testing", "level": "expert", "years": 5 },
+        { "name": "Contract Testing", "level": "expert", "years": 3 },
+        { "name": "E2E Testing", "level": "advanced", "years": 5 },
+        { "name": "Risk-based Testing", "level": "advanced", "years": 5 }
+      ]
+    },
+    {
+      "name": "AI & LLM Orchestration",
+      "items": [
+        { "name": "Agentic Workflows (MCP)", "level": "advanced", "years": 1 },
+        { "name": "AWS Bedrock", "level": "intermediate", "years": 1 },
+        { "name": "Cursor / Claude Code", "level": "advanced", "years": 1 },
+        { "name": "Ollama / Gemma (Local AI)", "level": "intermediate", "years": 1 }
+      ]
+    },
+    {
+      "name": "CI/CD & DevOps",
+      "items": [
+        { "name": "GitHub Actions", "level": "expert", "years": 3 },
+        { "name": "Jenkins", "level": "advanced", "years": 3 },
+        { "name": "CI/CD Pipeline Design", "level": "advanced", "years": 5 },
+        { "name": "Artifact-based Reporting", "level": "advanced", "years": 3 }
+      ]
+    },
+    {
+      "name": "Cloud & Infrastructure",
+      "items": [
+        { "name": "AWS (ECS, S3, SNS, IAM, CloudWatch)", "level": "advanced", "years": 3 },
+        { "name": "Docker", "level": "advanced", "years": 4 },
+        { "name": "Linux", "level": "advanced", "years": 5 },
+        { "name": "Infrastructure as Code (Terraform/CloudFormation)", "level": "beginner", "years": 1 }
+      ]
+    },
+    {
+      "name": "Observability & Monitoring",
+      "items": [
+        { "name": "SonarCloud", "level": "advanced", "years": 3 },
+        { "name": "GitHub API (REST/GraphQL)", "level": "advanced", "years": 3 },
+        { "name": "Custom Dashboards", "level": "advanced", "years": 3 },
+        { "name": "Coverage Analytics", "level": "advanced", "years": 3 }
+      ]
+    },
+    {
+      "name": "Tools & Platforms",
+      "items": [
+        { "name": "Postman", "level": "expert", "years": 5 },
+        { "name": "Jira", "level": "advanced", "years": 5 },
+        { "name": "Git", "level": "expert", "years": 5 },
+        { "name": "Allure", "level": "advanced", "years": 3 },
+        { "name": "JMeter", "level": "intermediate", "years": 2 },
+        { "name": "K6", "level": "intermediate", "years": 2 }
+      ]
+    }
+  ]
+}

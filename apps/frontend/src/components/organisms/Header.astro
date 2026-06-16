@@ -1,0 +1,80 @@
+---
+interface NavigationItem {
+  label: string;
+  path: string;
+}
+
+interface Props {
+  navigation: NavigationItem[];
+  currentPath: string;
+}
+
+const { navigation, currentPath } = Astro.props;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-base/90 backdrop-blur-md border-b border-border/20">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="/" class="font-heading text-lg text-accent phosphor-glow hover:text-glow transition-all">
+        DAVID RODRÍGUEZ DE LA CRUZ
+        <span class="block text-sm">A.K.A (Davo)</span>
+      </a>
+
+      {/* Desktop navigation */}
+      <div class="hidden md:flex items-center gap-1">
+        {navigation.map((item) => (
+          <a
+            href={item.path}
+            class={`px-4 py-2 font-heading text-sm tracking-wider uppercase transition-all ${
+              currentPath === item.path || (item.path !== '/' && currentPath.startsWith(item.path))
+                ? 'text-accent phosphor-glow'
+                : 'text-meta hover:text-accent hover:text-glow'
+            }`}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+
+      {/* Mobile menu button */}
+      <button
+        id="mobile-menu-button"
+        class="md:hidden p-2 text-meta hover:text-accent transition-colors"
+        aria-label="Toggle menu"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    {/* Mobile navigation */}
+    <div id="mobile-menu" class="hidden md:hidden pb-4">
+      <div class="flex flex-col gap-1">
+        {navigation.map((item) => (
+          <a
+            href={item.path}
+            class={`px-4 py-3 font-heading text-sm tracking-wider uppercase transition-all ${
+              currentPath === item.path || (item.path !== '/' && currentPath.startsWith(item.path))
+                ? 'text-accent phosphor-glow bg-accent/5'
+                : 'text-meta hover:text-accent hover:bg-accent/5'
+            }`}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>

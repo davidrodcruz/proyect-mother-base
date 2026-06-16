@@ -1,0 +1,36 @@
+---
+interface Props {
+  name: string;
+  level: 'expert' | 'advanced' | 'intermediate' | 'beginner';
+  years?: number;
+}
+
+const { name, level, years } = Astro.props;
+
+const levelConfig = {
+  expert: { color: 'bg-accent', bars: 4 },
+  advanced: { color: 'bg-meta', bars: 3 },
+  intermediate: { color: 'bg-border', bars: 2 },
+  beginner: { color: 'bg-border/60', bars: 1 },
+};
+
+const config = levelConfig[level];
+---
+
+<div class="group relative inline-flex items-center gap-2 px-3 py-1.5 bg-section border border-border/40 rounded text-sm font-heading text-body hover:border-accent/40 hover:text-accent transition-all cursor-default">
+  <span>{name}</span>
+  
+  <div class="flex gap-0.5">
+    {Array.from({ length: 4 }).map((_, i) => (
+      <div
+        class={`w-1 h-3 rounded-sm ${i < config.bars ? config.color : 'bg-border/20'}`}
+      />
+    ))}
+  </div>
+
+  {/* Tooltip */}
+  <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-base border border-accent/30 rounded text-xs font-heading text-accent opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap z-10">
+    <div class="capitalize">{level}</div>
+    {years && <div class="text-meta">{years} years</div>}
+  </div>
+</div>

@@ -1,0 +1,42 @@
+{
+  "id": "stinger",
+  "name": "STINGER",
+  "subtitle": "Mobile UI Testing Framework",
+  "type": "mobile",
+  "description": "Sting mobile bugs before they reach production. Mobile testing automation with Appium and Playwright.",
+  "icon": "/icons/stinger.svg",
+  "color": "#EF4444",
+  "technologies": ["Python", "Appium", "Playwright", "Behave"],
+  "features": [
+    {
+      "name": "Cross-platform Testing",
+      "description": "iOS and Android from single codebase"
+    },
+    {
+      "name": "Gesture Support",
+      "description": "Swipe, tap, pinch, zoom automation"
+    },
+    {
+      "name": "Device Farm Integration",
+      "description": "Run on real devices via cloud"
+    },
+    {
+      "name": "Screenshots & Videos",
+      "description": "Capture evidence on failure"
+    }
+  ],
+  "architecture": {
+    "pattern": "Page Object Model",
+    "entry_point": "run_tests.py",
+    "config": "devices.yaml"
+  },
+  "stats": {
+    "tests_executed": "3,000+",
+    "coverage": "85%",
+    "frameworks_tested": 8
+  },
+  "links": {
+    "github": "https://github.com/davo/stinger",
+    "docs": "https://stinger.davo.dev"
+  }
+}

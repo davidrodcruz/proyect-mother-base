@@ -1,0 +1,54 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+.next/
+.nuxt/
+
+# Turbo
+.turbo/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+allure-results/
+results/
+
+# Docker
+.docker/
+
+# Astro
+.astro/
+
+# TypeScript
+*.tsbuildinfo
+
+# Husky
+.husky/_
+
+# Misc
+*.local

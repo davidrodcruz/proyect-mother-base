@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/atoms/Button.astro';
+---
+
+<Layout title="404 - Equipment Not Found">
+  <div class="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <div class="absolute inset-0 grid-pattern" />
+    
+    <div class="relative z-10 max-w-2xl mx-auto px-4 text-center">
+      {/* Glitch title */}
+      <div class="mb-8">
+        <h1 
+          class="font-heading text-5xl md:text-6xl font-bold text-headline phosphor-glow-lg glitch-intense"
+          data-text="404"
+        >
+          404
+        </h1>
+      </div>
+
+      {/* Static noise effect */}
+      <div class="mb-8 flex justify-center">
+        <div class="w-64 h-1 bg-gradient-to-r from-transparent via-accent/50 to-transparent animate-pulse" />
+      </div>
+
+      {/* Random message */}
+      <div class="mb-12">
+        <p id="message-text" class="font-heading text-lg md:text-xl text-body leading-relaxed"></p>
+      </div>
+
+      {/* Tactical border */}
+      <div class="mb-8 flex justify-center gap-2">
+        <div class="w-2 h-2 bg-meta rounded-full animate-pulse" />
+        <div class="w-2 h-2 bg-accent rounded-full animate-pulse" style="animation-delay: 0.2s" />
+        <div class="w-2 h-2 bg-meta rounded-full animate-pulse" style="animation-delay: 0.4s" />
+      </div>
+
+      <Button text="Back to Mother Base" href="/" variant="primary" size="lg" />
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const messages = [
+    "Mother Base R&D Team is currently developing this equipment. Please wait for the next supply drop.",
+    "Building the ultimate automation weapon... I'm going to keep you waiting, huh? ;)"
+  ];
+  
+  const messageElement = document.getElementById('message-text');
+  if (messageElement) {
+    const randomIndex = Math.floor(Math.random() * messages.length);
+    messageElement.textContent = messages[randomIndex];
+  }
+</script>

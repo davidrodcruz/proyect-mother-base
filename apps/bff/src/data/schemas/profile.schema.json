@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["name", "title", "tagline", "avatar", "location", "years_experience", "summary", "social"],
+  "properties": {
+    "name": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "title": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "tagline": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "avatar": { "type": "string" },
+    "location": { "type": "string" },
+    "years_experience": { "type": "number", "minimum": 0, "maximum": 50 },
+    "summary": { "type": "string" },
+    "social": {
+      "type": "object",
+      "required": ["github", "linkedin", "email"],
+      "properties": {
+        "github": { "type": "string", "format": "uri" },
+        "linkedin": { "type": "string", "format": "uri" },
+        "email": { "type": "string", "format": "email" }
+      }
+    }
+  }
+}

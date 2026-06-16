@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["id", "name", "subtitle", "type", "description", "icon", "color", "technologies", "features", "architecture", "stats", "links"],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "subtitle": { "type": "string" },
+    "type": { "type": "string", "enum": ["api", "ui", "cvc", "mobile"] },
+    "description": { "type": "string" },
+    "icon": { "type": "string" },
+    "color": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+    "technologies": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "description"],
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "architecture": {
+      "type": "object",
+      "required": ["pattern", "entry_point", "config"],
+      "properties": {
+        "pattern": { "type": "string" },
+        "entry_point": { "type": "string" },
+        "config": { "type": "string" }
+      }
+    },
+    "stats": {
+      "type": "object",
+      "required": ["tests_executed", "coverage", "frameworks_tested"],
+      "properties": {
+        "tests_executed": { "type": "string" },
+        "coverage": { "type": "string" },
+        "frameworks_tested": { "type": "number" }
+      }
+    },
+    "links": {
+      "type": "object",
+      "required": ["github", "docs"],
+      "properties": {
+        "github": { "type": "string", "format": "uri" },
+        "docs": { "type": "string", "format": "uri" }
+      }
+    }
+  }
+}

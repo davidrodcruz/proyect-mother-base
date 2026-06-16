@@ -1,0 +1,262 @@
+@layer components {
+  /* CRT Scanline overlay */
+  .crt-overlay {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 1px,
+      rgba(0, 0, 0, 0.15) 1px,
+      rgba(0, 0, 0, 0.15) 2px
+    );
+  }
+
+  /* Moving scanline bar */
+  .crt-scanline-bar {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    overflow: hidden;
+  }
+
+  .crt-scanline-bar::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      rgba(147, 198, 208, 0.08),
+      transparent
+    );
+    animation: scanline 8s linear infinite;
+  }
+
+  /* CRT curvature effect */
+  .crt-curve {
+    box-shadow:
+      inset 0 0 60px rgba(0, 0, 0, 0.5),
+      inset 0 0 120px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+  }
+
+  /* Phosphor glow on text */
+  .phosphor-glow {
+    text-shadow: 0 0 5px #93C6D0, 0 0 10px #93C6D0;
+  }
+
+  .phosphor-glow-lg {
+    text-shadow: 0 0 10px #93C6D0, 0 0 20px #93C6D0, 0 0 30px #93C6D0;
+  }
+
+  .phosphor-glow-accent {
+    text-shadow: 0 0 5px #93C6D0, 0 0 10px #93C6D0;
+  }
+
+  /* Grid pattern background */
+  .grid-pattern {
+    background-image: radial-gradient(
+      circle,
+      rgba(147, 198, 208, 0.06) 1px,
+      transparent 1px
+    );
+    background-size: 32px 32px;
+  }
+
+  /* Waveform decoration */
+  .waveform {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .waveform::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: repeating-linear-gradient(
+      90deg,
+      #93C6D0 0px,
+      #93C6D0 4px,
+      transparent 4px,
+      transparent 8px
+    );
+    animation: waveform 3s ease-in-out infinite;
+  }
+
+  /* Channel static effect for transitions */
+  .channel-static {
+    animation: channel-switch 0.3s ease-out;
+  }
+
+  @keyframes channel-switch {
+    0% {
+      opacity: 0;
+      filter: brightness(2) saturate(0);
+    }
+    20% {
+      opacity: 0.5;
+      filter: brightness(1.5) saturate(0.3);
+    }
+    40% {
+      opacity: 0.8;
+      filter: brightness(1.2) saturate(0.6);
+    }
+    100% {
+      opacity: 1;
+      filter: brightness(1) saturate(1);
+    }
+  }
+
+  /* HUD border style */
+  .hud-border {
+    border: 1px solid rgba(84, 138, 144, 0.4);
+    box-shadow: 0 0 5px rgba(84, 138, 144, 0.1), inset 0 0 5px rgba(84, 138, 144, 0.05);
+  }
+
+  .hud-border-accent {
+    border: 1px solid rgba(147, 198, 208, 0.4);
+    box-shadow: 0 0 5px rgba(147, 198, 208, 0.1), inset 0 0 5px rgba(147, 198, 208, 0.05);
+  }
+
+  .hud-border-danger {
+    border: 1px solid rgba(255, 0, 0, 0.4);
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.1), inset 0 0 5px rgba(255, 0, 0, 0.05);
+  }
+
+  /* Section divider */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(84, 138, 144, 0.3),
+      transparent
+    );
+  }
+
+  /* Glitch effect for transitions */
+  .glitch {
+    position: relative;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .glitch::before {
+    animation: glitch-1 3s infinite linear alternate-reverse;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    color: #FF0000;
+    opacity: 0.8;
+  }
+
+  .glitch::after {
+    animation: glitch-2 3s infinite linear alternate-reverse;
+    clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+    color: #93C6D0;
+    opacity: 0.8;
+  }
+
+  /* 404 page glitch - more intense */
+  .glitch-intense {
+    position: relative;
+    animation: glitch-skew 4s infinite linear alternate-reverse;
+  }
+
+  .glitch-intense::before,
+  .glitch-intense::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .glitch-intense::before {
+    animation: glitch-1 2s infinite linear alternate-reverse;
+    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+    color: #FF0000;
+    opacity: 0.9;
+    text-shadow: -3px 0 #FF0000;
+  }
+
+  .glitch-intense::after {
+    animation: glitch-2 2s infinite linear alternate-reverse;
+    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+    color: #93C6D0;
+    opacity: 0.9;
+    text-shadow: 3px 0 #93C6D0;
+  }
+
+  @keyframes glitch-1 {
+    0% { transform: translate(0); }
+    20% { transform: translate(-3px, 3px); }
+    40% { transform: translate(-3px, -3px); }
+    60% { transform: translate(3px, 3px); }
+    80% { transform: translate(3px, -3px); }
+    100% { transform: translate(0); }
+  }
+
+  @keyframes glitch-2 {
+    0% { transform: translate(0); }
+    20% { transform: translate(3px, -3px); }
+    40% { transform: translate(3px, 3px); }
+    60% { transform: translate(-3px, -3px); }
+    80% { transform: translate(-3px, 3px); }
+    100% { transform: translate(0); }
+  }
+
+  @keyframes glitch-skew {
+    0% { transform: skew(0deg); }
+    20% { transform: skew(-0.5deg); }
+    40% { transform: skew(0.5deg); }
+    60% { transform: skew(-0.3deg); }
+    80% { transform: skew(0.3deg); }
+    100% { transform: skew(0deg); }
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .crt-scanline-bar::before {
+    animation: none;
+  }
+
+  .waveform::after {
+    animation: none;
+  }
+
+  .channel-static {
+    animation: none;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    animation: none;
+  }
+
+  .animate-glow,
+  .animate-glow-pulse,
+  .animate-scanline,
+  .animate-flicker,
+  .animate-float,
+  .animate-waveform,
+  .animate-fade-in-up {
+    animation: none;
+  }
+}

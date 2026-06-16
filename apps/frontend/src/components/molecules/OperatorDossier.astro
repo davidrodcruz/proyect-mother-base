@@ -1,0 +1,91 @@
+---
+/**
+ * OperatorDossier — Presentational molecule (BFF-ready)
+ * 
+ * A dumb component that receives data via props for the right panel
+ * of the Split Terminal hero layout. Designed for direct BFF injection.
+ * 
+ * @prop summary - Professional summary text (2-3 lines max)
+ * @prop stats - Array of { value: string, label: string } objects (4 items for 2x2 grid)
+ * @prop work_status - Work eligibility status text
+ */
+interface Stat {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  summary: string;
+  stats: Stat[];
+  work_status?: string;
+}
+
+const { summary, stats, work_status } = Astro.props;
+---
+
+<div class="dossier-panel w-full border border-border/50 rounded-lg bg-base/80 backdrop-blur-sm overflow-hidden">
+  {/* Panel Header */}
+  <div class="border-b border-border/30 px-6 py-4 flex items-center gap-3">
+    <span class="w-2.5 h-2.5 rounded-full bg-accent animate-pulse" />
+    <span class="font-heading text-sm tracking-[0.25em] uppercase text-meta">
+      // Operator Dossier
+    </span>
+  </div>
+
+  <div class="p-6 space-y-6">
+    {/* Professional Summary */}
+    <div>
+      <h3 class="font-heading text-sm tracking-[0.2em] uppercase text-meta mb-3">
+        &gt; Profile_Summary
+      </h3>
+      <p class="text-body text-base leading-relaxed">
+        {summary}
+      </p>
+    </div>
+
+    {/* Quick Stats — 2x2 Grid */}
+    <div>
+      <h3 class="font-heading text-sm tracking-[0.2em] uppercase text-meta mb-3">
+        &gt; Quick_Stats
+      </h3>
+      <div class="grid grid-cols-2 gap-3">
+        {stats.map((stat) => (
+          <div class="bg-section/80 border border-border/30 rounded px-4 py-3 text-center">
+            <div class="font-heading text-2xl font-bold text-accent phosphor-glow-lg">
+              {stat.value}
+            </div>
+            <div class="text-meta text-xs uppercase tracking-[0.15em] mt-1">
+              {stat.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Work Status Block */}
+    {work_status && (
+      <div class="border border-accent/40 bg-accent/5 rounded px-5 py-4">
+        <div class="flex items-center gap-2 mb-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <span class="font-heading text-sm tracking-[0.2em] uppercase text-accent">
+            Eligibility
+          </span>
+        </div>
+        <p class="text-body text-sm leading-relaxed">
+          {work_status}
+        </p>
+      </div>
+    )}
+  </div>
+</div>
+
+<style>
+  .dossier-panel {
+    box-shadow:
+      0 0 12px rgba(84, 138, 144, 0.12),
+      0 0 40px rgba(84, 138, 144, 0.05),
+      inset 0 0 40px rgba(11, 17, 17, 0.4);
+  }
+</style>

@@ -1,0 +1,31 @@
+{
+  "name": "davo-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "David (Davo) Portfolio - Senior SDET | QA Automation Engineer",
+  "scripts": {
+    "prepare": "husky install",
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\""
+  },
+  "devDependencies": {
+    "husky": "^9.0.0",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.0",
+    "turbo": "^2.0.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": ["eslint --fix", "prettier --write"],
+    "*.{json,yaml,yml}": ["prettier --write"],
+    "*.{md,css}": ["prettier --write"]
+  },
+  "packageManager": "pnpm@11.6.0",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}

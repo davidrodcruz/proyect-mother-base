@@ -1,0 +1,70 @@
+---
+import Badge from '../atoms/Badge.astro';
+
+interface Props {
+  id: string;
+  name: string;
+  subtitle: string;
+  description: string;
+  color: string;
+  technologies: string[];
+  features: any[];
+  stats: any;
+}
+
+const { id, name, subtitle, description, color, technologies, features, stats } = Astro.props;
+---
+
+<a
+  href={`/projects/${id}`}
+  class="group block bg-card backdrop-blur-sm rounded-lg hud-border p-6 transition-all duration-300 hover:shadow-[0_0_20px_rgba(147,198,208,0.2)] hover:border-accent/40"
+>
+  <div class="flex items-start justify-between mb-4">
+    <div>
+      <h3 class="font-heading text-xl font-bold text-headline group-hover:text-glow transition-all">
+        {name}
+      </h3>
+      <p class="text-meta text-sm mt-1">{subtitle}</p>
+    </div>
+    <div
+      class="w-10 h-10 rounded-lg flex items-center justify-center hud-border"
+      style={`border-color: ${color}40; box-shadow: 0 0 10px ${color}20`}
+    >
+      <span class="font-heading font-bold" style={`color: ${color}`}>
+        {name[0]}
+      </span>
+    </div>
+  </div>
+
+  <p class="text-body text-sm mb-4 line-clamp-2">
+    {description}
+  </p>
+
+  <div class="flex flex-wrap gap-1.5 mb-4">
+    {technologies.slice(0, 4).map((tech: string) => (
+      <Badge text={tech} variant="meta" size="sm" />
+    ))}
+  </div>
+
+  <div class="grid grid-cols-3 gap-3 mb-4">
+    <div class="text-center">
+      <div class="text-accent font-heading font-bold text-sm">{stats.tests_executed}</div>
+      <div class="text-meta text-xs uppercase tracking-wider">Tests</div>
+    </div>
+    <div class="text-center">
+      <div class="text-accent font-heading font-bold text-sm">{stats.coverage}</div>
+      <div class="text-meta text-xs uppercase tracking-wider">Coverage</div>
+    </div>
+    <div class="text-center">
+      <div class="text-accent font-heading font-bold text-sm">{stats.frameworks_tested}</div>
+      <div class="text-meta text-xs uppercase tracking-wider">Frameworks</div>
+    </div>
+  </div>
+
+  <div class="flex items-center text-accent group-hover:text-accent-light transition-colors">
+    <span class="text-sm tracking-wider uppercase">Enter</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 group-hover:translate-x-1 transition-transform">
+      <path d="m9 18 6-6-6-6"/>
+    </svg>
+  </div>
+</a>
