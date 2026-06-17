@@ -1,0 +1,11 @@
+{
+  "buildCommand": "cd apps/frontend && npx astro build",
+  "installCommand": "pnpm install",
+  "framework": "astro",
+  "rewrites": [
+    {
+      "source": "/api/v1/(.*)",
+      "destination": "/api/v1/[[path]].ts"
+    }
+  ]
+}

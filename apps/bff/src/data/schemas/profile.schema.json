@@ -16,7 +16,8 @@
       "properties": {
         "github": { "type": "string", "format": "uri" },
         "linkedin": { "type": "string", "format": "uri" },
-        "email": { "type": "string", "format": "email" }
+        "email": { "type": "string", "format": "email" },
+        "secondaryEmail": { "type": "string", "format": "email" }
       }
     }
   }
