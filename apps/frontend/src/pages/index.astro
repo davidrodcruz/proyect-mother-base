@@ -60,46 +60,58 @@ const dossierData = {
   {/* ═══════════════════════════════════════════════════════════════
        SECTION 1: HERO — WELCOME TO MOTHER BASE
        ═══════════════════════════════════════════════════════════════ */}
-  <section id="home" class="min-h-screen flex items-center relative overflow-hidden">
+  <section id="home" class="min-h-screen flex items-start lg:items-center relative overflow-visible lg:overflow-hidden pt-20 lg:pt-0">
     <div class="absolute inset-0 grid-pattern" />
 
-    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-0">
-      {/* Split Terminal: 60/40 on desktop, vertical stack on mobile */}
-      <div class="flex flex-col lg:flex-row lg:items-center lg:gap-12 xl:gap-16">
+    <div class="relative z-10 w-full px-4 sm:px-6 lg:px-8 xl:px-12 py-12 lg:py-0">
+      {/* ═══ Hero Grid: 50 / 25 / 25 — equal row height ═══ */}
+      <div class="flex flex-col lg:flex-row lg:items-stretch lg:gap-6">
 
-        {/* ═══ LEFT COLUMN — 60%: Main Hero Content ═══ */}
-        <div class="lg:w-[60%] flex flex-col items-center lg:items-start text-center lg:text-left">
-          <div class="mb-4">
-            <span class="text-meta text-sm tracking-[0.3em] uppercase">Codec Channel Active</span>
-          </div >
+        {/* ═══ LEFT — 50%: Welcome (no border, vertically centered) ═══ */}
+        <div class="lg:w-1/2 w-full flex items-center justify-center lg:justify-start">
+          <div class="w-full flex flex-col items-center lg:items-start text-center lg:text-left pl-5">
+            <span class="text-meta text-[29px] tracking-[0.3em] uppercase mb-4">Codec Channel Active</span>
 
-          <h1 class="font-heading font-bold text-headline mb-6 phosphor-glow-lg tracking-wider text-[clamp(1.75rem,4vw,3.25rem)]">
-            WELCOME TO MOTHER BASE
-          </h1>
+            <h1 class="font-heading font-bold text-headline mb-4 phosphor-glow-lg tracking-wider text-[clamp(2.6875rem,4vw,4.1875rem)]">
+              WELCOME TO MOTHER BASE
+            </h1>
 
-          <p class="font-heading text-xl md:text-2xl text-body mb-8 max-w-xl">
-            The place for DAVO frameworks
-          </p>
+            <p class="font-heading text-[35px] text-body">
+              The place for DAVO frameworks
+            </p>
+          </div>
+        </div>
 
-          <div class="flex flex-col sm:flex-row gap-6 mb-12 lg:mb-0">
-            <Button text="View Projects" href="#projects" variant="primary" size="lg" />
-            <Button text="Contact" href="#contact" variant="secondary" size="lg" />
-          </div >
-
-        </div >
-
-        {/* ═══ RIGHT COLUMN — 40%: Operator Dossier ═══ */}
-        <div class="lg:w-[40%] w-full max-w-md mx-auto lg:mx-0">
+        {/* ═══ CENTER — 25%: Operator Dossier ═══ */}
+        <div class="lg:w-1/4 w-full">
           <OperatorDossier
             summary={dossierData.summary}
             stats={dossierData.stats}
             work_status={dossierData.work_status}
           />
-        </div >
+        </div>
 
-      </div >
+        {/* ═══ RIGHT — 25%: Operator Portrait ═══ */}
+        <div class="lg:w-1/4 w-full">
+          <div class="hero-card h-full border border-accent/40 rounded-lg bg-base/80 backdrop-blur-sm overflow-hidden flex items-center justify-center">
+            <img
+              src="/Dossier_and_background_no_bg.png"
+              alt="Operator DAVO — System Architect"
+              class="w-full h-full object-contain"
+              loading="eager"
+            />
+          </div>
+        </div>
 
-      {/* Scroll Indicator — centered below both columns on desktop */}
+      </div>
+
+      {/* Hero CTA Buttons — centered */}
+      <div class="mt-10 flex flex-col sm:flex-row gap-6 justify-center">
+        <Button text="View Projects" href="#projects" variant="primary" size="lg" />
+        <Button text="Contact" href="#contact" variant="secondary" size="lg" />
+      </div>
+
+      {/* Scroll Indicator — centered */}
       <div class="mt-12 lg:mt-16 animate-bounce text-meta/40 flex justify-center">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="m6 9 6 6 6-6"/>
@@ -615,6 +627,15 @@ const dossierData = {
     </div>
   </section>
 </Layout>
+
+<style>
+  .hero-card {
+    box-shadow:
+      0 0 12px rgba(84, 138, 144, 0.12),
+      0 0 40px rgba(84, 138, 144, 0.05),
+      inset 0 0 40px rgba(11, 17, 17, 0.4);
+  }
+</style>
 
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement;
