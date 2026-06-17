@@ -2,12 +2,8 @@ import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import helmet from '@fastify/helmet';
 import rateLimit from '@fastify/rate-limit';
-import { profileRoutes } from './routes/profile.js';
-import { experienceRoutes } from './routes/experience.js';
-import { skillsRoutes } from './routes/skills.js';
+import { createJsonRoute } from './lib/data-loader.js';
 import { projectsRoutes } from './routes/projects.js';
-import { certificationsRoutes } from './routes/certifications.js';
-import { navigationRoutes } from './routes/navigation.js';
 import { healthRoutes } from './routes/health.js';
 import { contactRoutes } from './routes/contact.js';
 import { projectStatusRoutes } from './routes/projects-status.js';
@@ -64,13 +60,15 @@ await app.register(rateLimit, {
   }),
 });
 
-// Routes
-await app.register(profileRoutes, { prefix: '/api/v1' });
-await app.register(experienceRoutes, { prefix: '/api/v1' });
-await app.register(skillsRoutes, { prefix: '/api/v1' });
+// Routes — JSON data files
+createJsonRoute(app, '/api/v1/profile', 'profile.json', 'profile');
+createJsonRoute(app, '/api/v1/experience', 'experience.json', 'experience');
+createJsonRoute(app, '/api/v1/skills', 'skills.json', 'skills');
+createJsonRoute(app, '/api/v1/certifications', 'certifications.json', 'certifications');
+createJsonRoute(app, '/api/v1/navigation', 'navigation.json', 'navigation');
+
+// Routes — custom handlers
 await app.register(projectsRoutes, { prefix: '/api/v1' });
-await app.register(certificationsRoutes, { prefix: '/api/v1' });
-await app.register(navigationRoutes, { prefix: '/api/v1' });
 await app.register(healthRoutes, { prefix: '/api/v1' });
 await app.register(contactRoutes, { prefix: '/api/v1' });
 await app.register(projectStatusRoutes, { prefix: '/api/v1' });

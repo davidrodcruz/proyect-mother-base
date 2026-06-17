@@ -50,18 +50,6 @@
 }
 
 @layer utilities {
-  .text-glow {
-    text-shadow: 0 0 5px #93C6D0, 0 0 10px #93C6D0;
-  }
-
-  .text-glow-lg {
-    text-shadow: 0 0 10px #93C6D0, 0 0 20px #93C6D0, 0 0 30px #93C6D0;
-  }
-
-  .text-glow-accent {
-    text-shadow: 0 0 5px #93C6D0, 0 0 10px #93C6D0;
-  }
-
   .line-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -74,5 +62,18 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  /* Alias para group-hover (valor idéntico a phosphor-glow en crt.css) */
+  .text-glow {
+    text-shadow: 0 0 5px #93C6D0, 0 0 10px #93C6D0;
+  }
+
+  .text-glow-lg {
+    text-shadow: 0 0 10px #93C6D0, 0 0 20px #93C6D0, 0 0 30px #93C6D0;
+  }
+
+  .text-glow-accent {
+    text-shadow: 0 0 5px #93C6D0, 0 0 10px #93C6D0;
   }
 }

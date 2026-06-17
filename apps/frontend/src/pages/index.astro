@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Badge from '../components/atoms/Badge.astro';
 import Button from '../components/atoms/Button.astro';
+import Card from '../components/molecules/Card.astro';
 import SkillChip from '../components/molecules/SkillChip.astro';
 import TimelineEntry from '../components/molecules/TimelineEntry.astro';
 import OperatorDossier from '../components/molecules/OperatorDossier.astro';
@@ -141,59 +142,15 @@ const dossierData = {
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {projects.map((project: any) => (
-          <a
-            href={`/projects/${project.id}`}
-            class="group block bg-card/80 backdrop-blur-sm rounded-lg hud-border p-8 transition-all duration-300 hover:shadow-[0_0_20px_rgba(147,198,208,0.2)] hover:border-accent/40"
-          >
-            <div class="flex items-start justify-between mb-6">
-              <div>
-                <h3 class="font-heading text-2xl font-bold text-headline group-hover:text-glow transition-all">
-                  {project.name}
-                </h3>
-                <p class="text-meta text-sm mt-1">{project.subtitle}</p>
-              </div>
-              <div
-                class="w-12 h-12 rounded-lg flex items-center justify-center hud-border"
-                style={`border-color: ${project.color}40; box-shadow: 0 0 10px ${project.color}20`}
-              >
-                <span class="font-heading font-bold text-lg" style={`color: ${project.color}`}>
-                  {project.name[0]}
-                </span>
-              </div>
-            </div>
-
-            <p class="text-body text-sm mb-6 line-clamp-2">
-              {project.description}
-            </p>
-
-            <div class="flex flex-wrap gap-2 mb-6">
-              {project.technologies.map((tech: string) => (
-                <Badge text={tech} variant="meta" size="sm" />
-              ))}
-            </div>
-
-            <div class="grid grid-cols-3 gap-4 mb-6">
-              <div class="text-center">
-                <div class="text-accent font-heading font-bold">{project.stats.tests_executed}</div>
-                <div class="text-meta text-xs uppercase tracking-wider">Tests</div>
-              </div>
-              <div class="text-center">
-                <div class="text-accent font-heading font-bold">{project.stats.coverage}</div>
-                <div class="text-meta text-xs uppercase tracking-wider">Coverage</div>
-              </div>
-              <div class="text-center">
-                <div class="text-accent font-heading font-bold">{project.stats.frameworks_tested}</div>
-                <div class="text-meta text-xs uppercase tracking-wider">Frameworks</div>
-              </div>
-            </div>
-
-            <div class="flex items-center text-accent group-hover:text-accent-light transition-colors">
-              <span class="text-sm tracking-wider uppercase">Enter</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 group-hover:translate-x-1 transition-transform">
-                <path d="m9 18 6-6-6-6"/>
-              </svg>
-            </div>
-          </a>
+          <Card
+            id={project.id}
+            name={project.name}
+            subtitle={project.subtitle}
+            description={project.description}
+            color={project.color}
+            technologies={project.technologies}
+            stats={project.stats}
+          />
         ))}
       </div>
     </div>
