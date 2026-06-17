@@ -13,15 +13,23 @@
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\""
   },
   "devDependencies": {
+    "@vercel/node": "^5.8.17",
     "husky": "^9.0.0",
     "lint-staged": "^15.2.0",
     "prettier": "^3.2.0",
     "turbo": "^2.0.0"
   },
   "lint-staged": {
-    "*.{ts,tsx}": ["eslint --fix", "prettier --write"],
-    "*.{json,yaml,yml}": ["prettier --write"],
-    "*.{md,css}": ["prettier --write"]
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,yaml,yml}": [
+      "prettier --write"
+    ],
+    "*.{md,css}": [
+      "prettier --write"
+    ]
   },
   "packageManager": "pnpm@11.6.0",
   "engines": {

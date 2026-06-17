@@ -8,9 +8,10 @@
   "years_experience": 5,
   "summary": "Senior SDET with 5+ years building and scaling quality engineering platforms, defining quality architecture standards, and scaling CI/CD pipelines for large-scale fintech microservices systems. Proven track record of eliminating production incidents through a 90% reduction in release cycle time and a 70% improvement in pre-production defect detection. Experienced in test infrastructure engineering, cross-team mentorship, and testing governance from contract testing strategy to distributed execution infrastructure on AWS.",
   "social": {
-    "github": "https://github.com/davo",
+    "github": "https://github.com/davidrodcruz",
     "linkedin": "https://linkedin.com/in/davidrodcruz",
-    "email": "drc412@gmail.com"
+    "email": "drc412@gmail.com",
+    "secondaryEmail": "drc412@hotmail.com"
   },
   "languages": [
     {

@@ -10,6 +10,7 @@ export interface Profile {
     github: string;
     linkedin: string;
     email: string;
+    secondaryEmail?: string;
   };
 }
 

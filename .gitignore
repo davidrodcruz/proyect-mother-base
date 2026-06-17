@@ -44,6 +44,9 @@ results/
 # Astro
 .astro/
 
+# Vercel
+.vercel/
+
 # TypeScript
 *.tsbuildinfo
 

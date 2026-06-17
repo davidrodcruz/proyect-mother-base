@@ -477,18 +477,37 @@ const dossierData = {
           
           <div class="space-y-4 mb-8">
             <a
-              href={`mailto:${profile?.social?.email || 'davo@example.com'}`}
-              class="flex items-center gap-4 p-4 bg-card/80 rounded-lg hud-border hover:shadow-[0_0_10px_rgba(147,198,208,0.15)] transition-all"
+              href={`mailto:${profile?.social?.email || 'drc412@gmail.com'}`}
+              class="flex items-center gap-4 p-4 bg-accent/5 rounded-lg hud-border border-accent/30 hover:shadow-[0_0_12px_rgba(147,198,208,0.2)] transition-all relative"
             >
-              <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent">
+              <div class="w-10 h-10 rounded-lg bg-accent/15 flex items-center justify-center text-accent shrink-0">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <rect width="20" height="16" x="2" y="4" rx="2"/>
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
                 </svg>
               </div>
-              <div>
-                <div class="text-meta text-xs uppercase tracking-wider">Email</div>
-                <div class="text-body">{profile?.social?.email || 'davo@example.com'}</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="text-meta text-xs uppercase tracking-wider">Email</span>
+                  <span class="text-[10px] font-semibold uppercase tracking-wider text-accent bg-accent/15 px-2 py-0.5 rounded">Primary</span>
+                </div>
+                <div class="text-body truncate">{profile?.social?.email || 'drc412@gmail.com'}</div>
+              </div>
+            </a>
+
+            <a
+              href={`mailto:${profile?.social?.secondaryEmail || 'drc412@hotmail.com'}`}
+              class="flex items-center gap-4 p-4 bg-card/60 rounded-lg hud-border hover:shadow-[0_0_10px_rgba(147,198,208,0.1)] transition-all opacity-80 hover:opacity-100"
+            >
+              <div class="w-10 h-10 rounded-lg bg-card/80 flex items-center justify-center text-body/50 shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="16" x="2" y="4" rx="2"/>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+              </div>
+              <div class="min-w-0">
+                <div class="text-meta/60 text-xs uppercase tracking-wider">Email</div>
+                <div class="text-body/70 truncate">{profile?.social?.secondaryEmail || 'drc412@hotmail.com'}</div>
               </div>
             </a>
 
@@ -512,7 +531,7 @@ const dossierData = {
             </a>
 
             <a
-              href={profile?.social?.github || 'https://github.com/davo'}
+              href={profile?.social?.github || 'https://github.com/davidrodcruz'}
               target="_blank"
               rel="noopener noreferrer"
               class="flex items-center gap-4 p-4 bg-card/80 rounded-lg hud-border hover:shadow-[0_0_10px_rgba(147,198,208,0.15)] transition-all"
