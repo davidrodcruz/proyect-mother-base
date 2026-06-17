@@ -32,12 +32,14 @@
       }
     },
     "stats": {
-      "type": "object",
-      "required": ["tests_executed", "coverage", "frameworks_tested"],
-      "properties": {
-        "tests_executed": { "type": "string" },
-        "coverage": { "type": "string" },
-        "frameworks_tested": { "type": "number" }
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["title", "subtitle"],
+        "properties": {
+          "title": { "type": "string" },
+          "subtitle": { "type": "string" }
+        }
       }
     },
     "links": {

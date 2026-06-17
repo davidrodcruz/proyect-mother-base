@@ -1,4 +1,13 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "plugin": ["C:/Users/Davo/.agents/skills/ponytail/.opencode/plugins/ponytail.mjs"]
+  "plugin": [
+    "C:/Users/Davo/.agents/skills/ponytail/.opencode/plugins/ponytail.mjs"
+  ],
+  "mcp": {
+    "vercel": {
+      "type": "remote",
+      "url": "https://mcp.vercel.com",
+      "enabled": true
+    }
+  }
 }

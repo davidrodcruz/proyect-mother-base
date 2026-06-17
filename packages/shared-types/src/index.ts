@@ -55,10 +55,9 @@ export interface Project {
     config: string;
   };
   stats: {
-    tests_executed: string;
-    coverage: string;
-    frameworks_tested: number;
-  };
+    title: string;
+    subtitle: string;
+  }[];
   links: {
     github: string;
     docs: string;

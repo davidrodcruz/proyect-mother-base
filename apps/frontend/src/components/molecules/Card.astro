@@ -8,11 +8,7 @@ interface Props {
   description: string;
   color: string;
   technologies: string[];
-  stats: {
-    tests_executed: string;
-    coverage: string;
-    frameworks_tested: string;
-  };
+  stats: { title: string; subtitle: string }[];
 }
 
 const { id, name, subtitle, description, color, technologies, stats } = Astro.props;
@@ -50,18 +46,12 @@ const { id, name, subtitle, description, color, technologies, stats } = Astro.pr
   </div>
 
   <div class="grid grid-cols-3 gap-4 mb-6">
-    <div class="text-center">
-      <div class="text-accent font-heading font-bold">{stats.tests_executed}</div>
-      <div class="text-meta text-xs uppercase tracking-wider">Tests</div>
-    </div>
-    <div class="text-center">
-      <div class="text-accent font-heading font-bold">{stats.coverage}</div>
-      <div class="text-meta text-xs uppercase tracking-wider">Coverage</div>
-    </div>
-    <div class="text-center">
-      <div class="text-accent font-heading font-bold">{stats.frameworks_tested}</div>
-      <div class="text-meta text-xs uppercase tracking-wider">Frameworks</div>
-    </div>
+    {stats.map((stat: { title: string; subtitle: string }) => (
+      <div class="text-center">
+        <div class="text-accent font-heading font-bold">{stat.title}</div>
+        <div class="text-meta text-xs uppercase tracking-wider">{stat.subtitle}</div>
+      </div>
+    ))}
   </div>
 
   <div class="flex items-center text-accent group-hover:text-accent-light transition-colors">

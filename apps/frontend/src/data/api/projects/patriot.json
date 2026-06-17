@@ -30,11 +30,11 @@
     "entry_point": "run_tests.py",
     "config": "config.yaml"
   },
-  "stats": {
-    "tests_executed": "5,000+",
-    "coverage": "90%",
-    "frameworks_tested": 15
-  },
+  "stats": [
+    { "title": "POM", "subtitle": "PATTERN" },
+    { "title": "3+", "subtitle": "BROWSERS" },
+    { "title": "VISUAL", "subtitle": "REGRESSION" }
+  ],
   "links": {
     "github": "https://github.com/davo/patriot",
     "docs": "https://patriot.davo.dev"

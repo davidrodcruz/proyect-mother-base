@@ -131,18 +131,12 @@ const status = null;
             <span class="text-meta">//</span> Stats
           </h2>
           <div class="grid grid-cols-3 gap-4">
-            <div class="p-4 bg-section rounded-lg hud-border text-center">
-              <div class="text-2xl font-heading font-bold text-accent">{project.stats.tests_executed}</div>
-              <div class="text-meta text-xs uppercase tracking-wider">Tests Executed</div>
-            </div>
-            <div class="p-4 bg-section rounded-lg hud-border text-center">
-              <div class="text-2xl font-heading font-bold text-accent">{project.stats.coverage}</div>
-              <div class="text-meta text-xs uppercase tracking-wider">Coverage</div>
-            </div>
-            <div class="p-4 bg-section rounded-lg hud-border text-center">
-              <div class="text-2xl font-heading font-bold text-accent">{project.stats.frameworks_tested}</div>
-              <div class="text-meta text-xs uppercase tracking-wider">Frameworks</div>
-            </div>
+            {project.stats.map((stat: { title: string; subtitle: string }) => (
+              <div class="p-4 bg-section rounded-lg hud-border text-center">
+                <div class="text-2xl font-heading font-bold text-accent">{stat.title}</div>
+                <div class="text-meta text-xs uppercase tracking-wider">{stat.subtitle}</div>
+              </div>
+            ))}
           </div>
         </div>
 
