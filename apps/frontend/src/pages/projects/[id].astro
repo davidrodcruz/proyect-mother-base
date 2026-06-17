@@ -3,25 +3,26 @@ import Layout from '../../layouts/Layout.astro';
 import Badge from '../../components/atoms/Badge.astro';
 import Button from '../../components/atoms/Button.astro';
 
-const { id } = Astro.params;
-const base = Astro.url.origin;
+import foxhoundProject from '../../data/api/projects/foxhound.json';
+import patriotProject from '../../data/api/projects/patriot.json';
+import codecProject from '../../data/api/projects/codec.json';
+import stingerProject from '../../data/api/projects/stinger.json';
 
-let project = null;
-let status = null;
-
-try {
-  const projectRes = await fetch(`${base}/api/v1/projects/${id}`);
-  if (projectRes.ok) {
-    project = await projectRes.json();
-  }
-
-  const statusRes = await fetch(`${base}/api/v1/projects/${id}/status`);
-  if (statusRes.ok) {
-    status = await statusRes.json();
-  }
-} catch (error) {
-  console.error('Failed to fetch project:', error);
+export function getStaticPaths() {
+  const allProjects: Record<string, any> = {
+    foxhound: foxhoundProject,
+    patriot: patriotProject,
+    codec: codecProject,
+    stinger: stingerProject,
+  };
+  return Object.entries(allProjects).map(([id, project]) => ({
+    params: { id },
+    props: { project },
+  }));
 }
+
+const { project } = Astro.props;
+const status = null;
 ---
 
 <Layout title={project?.name || 'Project Not Found'}>

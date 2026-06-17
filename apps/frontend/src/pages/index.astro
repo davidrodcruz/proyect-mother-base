@@ -7,42 +7,29 @@ import SkillChip from '../components/molecules/SkillChip.astro';
 import TimelineEntry from '../components/molecules/TimelineEntry.astro';
 import OperatorDossier from '../components/molecules/OperatorDossier.astro';
 
-let profile = null;
-let projects = [];
-let skills = null;
-let experience = [];
-let certifications = [];
+import profileData from '../data/api/profile.json';
+import projectsData from '../data/api/projects/foxhound.json';
+import foxhoundProject from '../data/api/projects/foxhound.json';
+import patriotProject from '../data/api/projects/patriot.json';
+import codecProject from '../data/api/projects/codec.json';
+import stingerProject from '../data/api/projects/stinger.json';
+import skillsData from '../data/api/skills.json';
+import experienceData from '../data/api/experience.json';
+import certificationsData from '../data/api/certifications.json';
 
-try {
-  const base = Astro.url.origin;
-  const [profileRes, projectsRes, skillsRes, experienceRes, certsRes] = await Promise.all([
-    fetch(`${base}/api/v1/profile`),
-    fetch(`${base}/api/v1/projects`),
-    fetch(`${base}/api/v1/skills`),
-    fetch(`${base}/api/v1/experience`),
-    fetch(`${base}/api/v1/certifications`),
-  ]);
+const profile = profileData as any;
+const skills = skillsData as any;
+const experience = experienceData as any[];
+const certifications = certificationsData as any[];
 
-  if (profileRes.ok) profile = await profileRes.json();
-  if (projectsRes.ok) projects = await projectsRes.json();
-  if (skillsRes.ok) skills = await skillsRes.json();
-  if (experienceRes.ok) experience = await experienceRes.json();
-  if (certsRes.ok) certifications = await certsRes.json();
-} catch (error) {
-  console.error('Failed to fetch data:', error);
-}
-
-// Sort projects: FOXHOUND first, PATRIOT second, others as-is
+const projectsList = [foxhoundProject, patriotProject, stingerProject, codecProject] as any[];
 const projectOrder = ['foxhound', 'patriot', 'codec', 'stinger'];
-projects.sort((a: any, b: any) => {
+const projects = projectsList.sort((a: any, b: any) => {
   const aIndex = projectOrder.indexOf(a.id);
   const bIndex = projectOrder.indexOf(b.id);
-  const aVal = aIndex === -1 ? 999 : aIndex;
-  const bVal = bIndex === -1 ? 999 : bIndex;
-  return aVal - bVal;
+  return (aIndex === -1 ? 999 : aIndex) - (bIndex === -1 ? 999 : bIndex);
 });
 
-// Operator Dossier data — will be injected from BFF in production
 const dossierData = {
   summary: "Senior SDET with 5+ years building and scaling quality engineering platforms for large-scale fintech microservices. Proven track record of eliminating production incidents through infrastructure-level testing architecture and cross-team governance.",
   stats: [
