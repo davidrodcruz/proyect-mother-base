@@ -1,0 +1,42 @@
+{
+  "id": "foxhound",
+  "name": "FOXHOUND",
+  "subtitle": "API Testing Framework",
+  "type": "api",
+  "description": "Hunt down API vulnerabilities with precision. A comprehensive API testing framework built with Python, Playwright, and Behave.",
+  "icon": "/icons/foxhound.svg",
+  "color": "#F59E0B",
+  "technologies": ["Python", "Playwright", "Behave", "Allure"],
+  "features": [
+    {
+      "name": "Contract Testing",
+      "description": "Validate API contracts against consumer expectations"
+    },
+    {
+      "name": "Auto-generated Reports",
+      "description": "Beautiful Allure reports with screenshots and logs"
+    },
+    {
+      "name": "Docker Support",
+      "description": "Run tests in isolated containers"
+    },
+    {
+      "name": "API Gateway",
+      "description": "REST API for triggering tests remotely"
+    }
+  ],
+  "architecture": {
+    "pattern": "Handler + Resources INI",
+    "entry_point": "run_tests.py",
+    "config": "api_resources.ini"
+  },
+  "stats": {
+    "tests_executed": "10,000+",
+    "coverage": "95%",
+    "frameworks_tested": 25
+  },
+  "links": {
+    "github": "https://github.com/davo/foxhound",
+    "docs": "https://foxhound.davo.dev"
+  }
+}

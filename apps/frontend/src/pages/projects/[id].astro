@@ -3,36 +3,19 @@ import Layout from '../../layouts/Layout.astro';
 import Badge from '../../components/atoms/Badge.astro';
 import Button from '../../components/atoms/Button.astro';
 
-const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:3000';
-
-export async function getStaticPaths() {
-  try {
-    const res = await fetch(`${API_URL}/api/v1/projects`);
-    const projects = await res.json();
-    return projects.map((project: any) => ({
-      params: { id: project.id },
-    }));
-  } catch (error) {
-    console.error('Failed to fetch projects for static paths:', error);
-    return [
-      { params: { id: 'foxhound' } },
-      { params: { id: 'patriot' } },
-    ];
-  }
-}
-
 const { id } = Astro.params;
+const base = Astro.url.origin;
 
 let project = null;
 let status = null;
 
 try {
-  const projectRes = await fetch(`${API_URL}/api/v1/projects/${id}`);
+  const projectRes = await fetch(`${base}/api/v1/projects/${id}`);
   if (projectRes.ok) {
     project = await projectRes.json();
   }
 
-  const statusRes = await fetch(`${API_URL}/api/v1/projects/${id}/status`);
+  const statusRes = await fetch(`${base}/api/v1/projects/${id}/status`);
   if (statusRes.ok) {
     status = await statusRes.json();
   }

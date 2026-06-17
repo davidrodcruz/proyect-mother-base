@@ -1,0 +1,10 @@
+{
+  "url": "http://localhost:8000",
+  "timeout_ms": 2000,
+  "endpoints": {
+    "health": "/api/v1/health",
+    "run": "/api/v1/tests/run",
+    "status": "/api/v1/tests/run/{run_id}",
+    "report": "/api/v1/tests/run/{run_id}/report"
+  }
+}

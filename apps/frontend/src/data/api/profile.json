@@ -1,0 +1,43 @@
+{
+  "name": "David Rodríguez de la Cruz",
+  "alias": "Davo",
+  "title": "Senior SDET | ISTQB® Certified",
+  "tagline": "Building Quality Architecture for Fintech at Scale",
+  "avatar": "/avatar.png",
+  "location": "Mexico City, Mexico (USMCA/CUSMA Eligible)",
+  "years_experience": 5,
+  "summary": "Senior SDET with 5+ years building and scaling quality engineering platforms, defining quality architecture standards, and scaling CI/CD pipelines for large-scale fintech microservices systems. Proven track record of eliminating production incidents through a 90% reduction in release cycle time and a 70% improvement in pre-production defect detection. Experienced in test infrastructure engineering, cross-team mentorship, and testing governance from contract testing strategy to distributed execution infrastructure on AWS.",
+  "social": {
+    "github": "https://github.com/davidrodcruz",
+    "linkedin": "https://linkedin.com/in/davidrodcruz",
+    "email": "drc412@gmail.com",
+    "secondaryEmail": "drc412@hotmail.com"
+  },
+  "languages": [
+    {
+      "name": "English",
+      "level": "C1 Advanced",
+      "certification": "EF SET English Certificate",
+      "certification_url": "https://cert.efset.org/yV8ot9"
+    },
+    {
+      "name": "Spanish",
+      "level": "Native"
+    }
+  ],
+  "education": {
+    "degree": "Bachelor of Science in Software Engineering",
+    "institution": "Universidad Autonoma de Zacatecas",
+    "period": "08/2016 – 08/2021",
+    "location": "Zacatecas, Zac, Mexico"
+  },
+  "soft_skills": [
+    "Technical Leadership in Quality Architecture & Distributed Systems",
+    "Advanced Problem Solving & Root Cause Analysis",
+    "End-to-End Ownership of Quality & Reliability",
+    "Cross-team Influence in Engineering Standards Adoption",
+    "Mentorship in Automation, Testing & AI-driven Workflows",
+    "Strategic Thinking for Scalable Testing Platforms"
+  ],
+  "work_status": "Mexican citizen eligible for USMCA/CUSMA TN Professional Work Permit (LMIA-exempt, no sponsorship required)"
+}

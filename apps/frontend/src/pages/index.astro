@@ -7,8 +7,6 @@ import SkillChip from '../components/molecules/SkillChip.astro';
 import TimelineEntry from '../components/molecules/TimelineEntry.astro';
 import OperatorDossier from '../components/molecules/OperatorDossier.astro';
 
-const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:3000';
-
 let profile = null;
 let projects = [];
 let skills = null;
@@ -16,12 +14,13 @@ let experience = [];
 let certifications = [];
 
 try {
+  const base = Astro.url.origin;
   const [profileRes, projectsRes, skillsRes, experienceRes, certsRes] = await Promise.all([
-    fetch(`${API_URL}/api/v1/profile`),
-    fetch(`${API_URL}/api/v1/projects`),
-    fetch(`${API_URL}/api/v1/skills`),
-    fetch(`${API_URL}/api/v1/experience`),
-    fetch(`${API_URL}/api/v1/certifications`),
+    fetch(`${base}/api/v1/profile`),
+    fetch(`${base}/api/v1/projects`),
+    fetch(`${base}/api/v1/skills`),
+    fetch(`${base}/api/v1/experience`),
+    fetch(`${base}/api/v1/certifications`),
   ]);
 
   if (profileRes.ok) profile = await profileRes.json();
@@ -628,7 +627,7 @@ const dossierData = {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch(`${import.meta.env.PUBLIC_API_URL || 'http://localhost:3000'}/api/v1/contact`, {
+      const response = await fetch('/api/v1/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
