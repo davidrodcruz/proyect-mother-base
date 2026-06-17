@@ -1,8 +1,7 @@
 {
-  "buildCommand": "cd apps/frontend && npx astro build",
+  "buildCommand": "cd apps/frontend && pnpm exec astro build",
   "outputDirectory": "apps/frontend/.vercel/output",
   "installCommand": "pnpm install",
-  "framework": "astro",
   "rewrites": [
     {
       "source": "/api/v1/(.*)",
