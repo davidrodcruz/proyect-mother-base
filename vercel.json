@@ -1,6 +1,5 @@
 {
   "buildCommand": "cd apps/frontend && npx astro build",
-  "outputDirectory": "apps/frontend/dist",
   "installCommand": "pnpm install",
   "framework": "astro",
   "rewrites": [
