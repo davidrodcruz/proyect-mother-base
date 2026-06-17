@@ -1,0 +1,42 @@
+{
+  "id": "patriot",
+  "name": "PATRIOT",
+  "subtitle": "Web UI Testing Framework",
+  "type": "ui",
+  "description": "Protect web interfaces with automated UI testing. Built with Playwright for cross-browser compatibility.",
+  "icon": "/icons/patriot.svg",
+  "color": "#8B5CF6",
+  "technologies": ["Python", "Playwright", "Behave", "Allure"],
+  "features": [
+    {
+      "name": "Page Object Model",
+      "description": "Maintainable test structure with POM pattern"
+    },
+    {
+      "name": "Cross-browser Testing",
+      "description": "Chrome, Firefox, Safari support out of the box"
+    },
+    {
+      "name": "Visual Regression",
+      "description": "Screenshot comparison for UI changes"
+    },
+    {
+      "name": "Headless Execution",
+      "description": "Run tests without browser UI"
+    }
+  ],
+  "architecture": {
+    "pattern": "Page Object Model",
+    "entry_point": "run_tests.py",
+    "config": "config.yaml"
+  },
+  "stats": {
+    "tests_executed": "5,000+",
+    "coverage": "90%",
+    "frameworks_tested": 15
+  },
+  "links": {
+    "github": "https://github.com/davo/patriot",
+    "docs": "https://patriot.davo.dev"
+  }
+}

@@ -1,12 +1,27 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { readFileSync, readdirSync } from 'fs';
-import { join } from 'path';
 
-const DATA_DIR = join(process.cwd(), 'apps', 'bff', 'src', 'data');
+import profileData from '../data/profile.json';
+import skillsData from '../data/skills.json';
+import experienceData from '../data/experience.json';
+import certificationsData from '../data/certifications.json';
+import navigationData from '../data/navigation.json';
+import gatewayConfig from '../data/gateway.json';
+import codecProject from '../data/projects/codec.json';
+import foxhoundProject from '../data/projects/foxhound.json';
+import patriotProject from '../data/projects/patriot.json';
+import stingerProject from '../data/projects/stinger.json';
 
-function loadJSON<T = unknown>(filename: string): T {
-  return JSON.parse(readFileSync(join(DATA_DIR, filename), 'utf-8'));
-}
+const projectsList = [foxhoundProject, patriotProject, stingerProject, codecProject] as Array<{
+  id: string; subtitle: string; description: string; [key: string]: unknown
+}>;
+
+const staticData: Record<string, unknown> = {
+  profile: profileData,
+  skills: skillsData,
+  experience: experienceData,
+  certifications: certificationsData,
+  navigation: navigationData,
+};
 
 async function getGatewayStatus(gatewayUrl: string, timeoutMs: number) {
   try {
@@ -38,15 +53,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           return sendJSON(res, 404, { error: 'Not found' });
         }
 
-        // Static JSON routes
-        const staticRoutes: Record<string, string> = {
-          profile: 'profile.json',
-          skills: 'skills.json',
-          experience: 'experience.json',
-          certifications: 'certifications.json',
-          navigation: 'navigation.json',
-        };
-
         if (resource === 'health') {
           return sendJSON(res, 200, {
             status: 'healthy',
@@ -59,18 +65,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
         if (resource === 'projects') {
           if (rest.length === 0) {
-            const files = readdirSync(join(DATA_DIR, 'projects')).filter(f => f.endsWith('.json'));
-            const projects = files.map(f => loadJSON(join('projects', f)));
-            return sendJSON(res, 200, projects);
+            return sendJSON(res, 200, projectsList);
           }
 
           if (rest.length === 1) {
             if (rest[0] === 'tets-overview') {
-              const files = readdirSync(join(DATA_DIR, 'projects')).filter(f => f.endsWith('.json'));
-              const frameworks = files.map(f => {
-                const p = loadJSON<{ id: string; subtitle: string; description: string }>(join('projects', f));
-                return { id: p.id, role: p.subtitle, mission: p.description.split('.')[0] };
-              });
+              const frameworks = projectsList.map(p => ({
+                id: p.id,
+                role: p.subtitle,
+                mission: p.description.split('.')[0],
+              }));
               return sendJSON(res, 200, {
                 title: 'Tactical Espionage Testing Suite',
                 description: '4 Frameworks. One Mission. Bulletproof Quality.',
@@ -79,24 +83,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
               });
             }
 
-            try {
-              const project = loadJSON(join('projects', `${rest[0]}.json`));
-              return sendJSON(res, 200, project);
-            } catch {
-              return sendJSON(res, 404, { error: 'Project not found' });
-            }
+            const project = projectsList.find(p => p.id === rest[0]);
+            if (project) return sendJSON(res, 200, project);
+            return sendJSON(res, 404, { error: 'Project not found' });
           }
 
           if (rest.length === 2 && rest[1] === 'status') {
-            const projectId = rest[0];
-            try {
-              loadJSON(join('projects', `${projectId}.json`));
-            } catch {
-              return sendJSON(res, 404, { error: 'Project not found' });
-            }
-            const gatewayConfig = loadJSON<{ url: string; timeout_ms: number }>('gateway.json');
-            const gatewayUrl = process.env.GATEWAY_URL || gatewayConfig.url;
-            const timeoutMs = parseInt(process.env.GATEWAY_TIMEOUT || String(gatewayConfig.timeout_ms), 10);
+            const found = projectsList.some(p => p.id === rest[0]);
+            if (!found) return sendJSON(res, 404, { error: 'Project not found' });
+
+            const gatewayUrl = process.env.GATEWAY_URL || (gatewayConfig as { url: string; timeout_ms: number }).url;
+            const timeoutMs = parseInt(process.env.GATEWAY_TIMEOUT || String((gatewayConfig as { url: string; timeout_ms: number }).timeout_ms), 10);
             const status = await getGatewayStatus(gatewayUrl, timeoutMs);
             return sendJSON(res, 200, status);
           }
@@ -104,13 +101,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           return sendJSON(res, 404, { error: 'Not found' });
         }
 
-        if (staticRoutes[resource]) {
-          try {
-            const data = loadJSON(staticRoutes[resource]);
-            return sendJSON(res, 200, data);
-          } catch {
-            return sendJSON(res, 500, { error: `Failed to load ${resource} data` });
-          }
+        if (staticData[resource]) {
+          return sendJSON(res, 200, staticData[resource]);
         }
 
         return sendJSON(res, 404, { error: 'Not found' });
