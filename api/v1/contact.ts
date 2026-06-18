@@ -37,7 +37,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const resend = new Resend(process.env.RESEND_API_KEY);
     const { data, error } = await resend.emails.send({
       from: 'onboarding@resend.dev',
-      to: ['drc412@gmail.com'],
+      to: ['drc412@hotmail.com'],
       subject: `Contact from ${sanitizedName}`,
       html: `<p><strong>Name:</strong> ${sanitizedName}</p><p><strong>Email:</strong> ${email}</p><p>${sanitizedMessage}</p>`,
       replyTo: email,
