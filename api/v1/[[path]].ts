@@ -1,5 +1,4 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { Resend } from 'resend';
 
 import profileData from '../data/profile.json';
 import skillsData from '../data/skills.json';
@@ -15,8 +14,6 @@ import stingerProject from '../data/projects/stinger.json';
 const projectsList = [foxhoundProject, patriotProject, stingerProject, codecProject] as Array<{
   id: string; subtitle: string; description: string; [key: string]: unknown
 }>;
-
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 const staticData: Record<string, unknown> = {
   profile: profileData,
@@ -141,6 +138,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           const sanitizedMessage = message.replace(/<[^>]*>/g, '');
 
           try {
+            const { Resend } = await import('resend');
+            const resend = new Resend(process.env.RESEND_API_KEY);
             await resend.emails.send({
               from: 'Portfolio Contact <onboarding@resend.dev>',
               to: ['drc412@gmail.com'],
