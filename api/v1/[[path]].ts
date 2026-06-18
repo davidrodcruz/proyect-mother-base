@@ -1,4 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+import { Resend } from 'resend';
 
 import profileData from '../data/profile.json';
 import skillsData from '../data/skills.json';
@@ -14,6 +15,8 @@ import stingerProject from '../data/projects/stinger.json';
 const projectsList = [foxhoundProject, patriotProject, stingerProject, codecProject] as Array<{
   id: string; subtitle: string; description: string; [key: string]: unknown
 }>;
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const staticData: Record<string, unknown> = {
   profile: profileData,
@@ -134,8 +137,22 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             return sendJSON(res, 400, { error: 'Invalid message' });
           }
 
-          console.log('Contact form submission:', { name: name.replace(/<[^>]*>/g, ''), email, message: message.replace(/<[^>]*>/g, '') });
-          return sendJSON(res, 200, { success: true });
+          const sanitizedName = name.replace(/<[^>]*>/g, '');
+          const sanitizedMessage = message.replace(/<[^>]*>/g, '');
+
+          try {
+            await resend.emails.send({
+              from: 'Portfolio Contact <onboarding@resend.dev>',
+              to: ['drc412@gmail.com'],
+              replyTo: email,
+              subject: `Contact from ${sanitizedName}`,
+              text: `Name: ${sanitizedName}\nEmail: ${email}\n\n${sanitizedMessage}`,
+            });
+            return sendJSON(res, 200, { success: true });
+          } catch (error) {
+            console.error('Resend error:', error);
+            return sendJSON(res, 500, { error: 'Failed to send email' });
+          }
         }
 
         return sendJSON(res, 404, { error: 'Not found' });
