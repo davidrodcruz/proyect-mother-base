@@ -134,24 +134,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             return sendJSON(res, 400, { error: 'Invalid message' });
           }
 
-          const sanitizedName = name.replace(/<[^>]*>/g, '');
-          const sanitizedMessage = message.replace(/<[^>]*>/g, '');
-
-          try {
-            const { Resend } = await import('resend');
-            const resend = new Resend(process.env.RESEND_API_KEY);
-            await resend.emails.send({
-              from: 'Portfolio Contact <onboarding@resend.dev>',
-              to: ['drc412@gmail.com'],
-              replyTo: email,
-              subject: `Contact from ${sanitizedName}`,
-              text: `Name: ${sanitizedName}\nEmail: ${email}\n\n${sanitizedMessage}`,
-            });
-            return sendJSON(res, 200, { success: true });
-          } catch (error) {
-            console.error('Resend error:', error);
-            return sendJSON(res, 500, { error: 'Failed to send email' });
-          }
+          console.log('Contact form submission:', { name: name.replace(/<[^>]*>/g, ''), email, message: message.replace(/<[^>]*>/g, '') });
+          return sendJSON(res, 200, { success: true });
         }
 
         return sendJSON(res, 404, { error: 'Not found' });
