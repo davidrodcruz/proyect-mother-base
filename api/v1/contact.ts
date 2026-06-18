@@ -35,14 +35,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     const { Resend } = await import('resend');
     const resend = new Resend(process.env.RESEND_API_KEY);
-    await resend.emails.send({
-      from: 'Portfolio Contact <onboarding@resend.dev>',
+    const { data, error } = await resend.emails.send({
+      from: 'onboarding@resend.dev',
       to: ['drc412@gmail.com'],
-      replyTo: email,
       subject: `Contact from ${sanitizedName}`,
-      text: `Name: ${sanitizedName}\nEmail: ${email}\n\n${sanitizedMessage}`,
+      html: `<p><strong>Name:</strong> ${sanitizedName}</p><p><strong>Email:</strong> ${email}</p><p>${sanitizedMessage}</p>`,
+      replyTo: email,
     });
-    return res.status(200).json({ success: true });
+
+    if (error) {
+      console.error('Resend error:', error);
+      return res.status(500).json({ error: error.message });
+    }
+
+    console.log('Resend success:', data);
+    return res.status(200).json({ success: true, id: data?.id });
   } catch (error) {
     console.error('Resend error:', error);
     return res.status(500).json({ error: 'Failed to send email' });
