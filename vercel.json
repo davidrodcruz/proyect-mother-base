@@ -1,6 +1,5 @@
 {
   "buildCommand": "cd apps/frontend && pnpm exec astro build",
   "outputDirectory": "apps/frontend/dist",
-  "installCommand": "pnpm install",
-  "apiDirectories": ["apps/frontend/api"]
+  "installCommand": "pnpm install"
 }

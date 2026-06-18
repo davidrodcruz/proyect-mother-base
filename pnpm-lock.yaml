@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      resend:
+        specifier: ^6.13.0
+        version: 6.13.0
     devDependencies:
       '@vercel/node':
         specifier: ^5.8.17
