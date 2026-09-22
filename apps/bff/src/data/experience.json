@@ -9,23 +9,22 @@
     },
     "location": "Mexico City, Mexico",
     "responsibilities": [
-      "Defined and executed the 'Testing Trophy' architectural standard, driving organizational shift from brittle E2E-heavy validation to scalable Unit → Integration/Contract → E2E testing models",
-      "Architected an LLM-powered Agentic Platform using MCP-based agents to automate testing lifecycle across multi-language codebases (Go, Python, JS), driving autonomy across 43+ engineering squads",
-      "Engineered enterprise-grade Contract Testing infrastructure (Pact Community) on AWS with custom database layer to map dependencies and replicate premium PactFlow features",
-      "Developed 7 specialized GenAI Agents for automated contract compliance: Discovery, Generation, and CI/CD",
-      "Built 360° Quality & Observability Platform integrating AI test generation, CI execution, and custom dashboard (SonarCloud/GitHub APIs) to monitor coverage trends across 1,300+ microservices",
-      "Led Zero-to-coverage enablement initiative, coaching engineering squads with no testing background to achieve 80-100% code coverage"
+      "Defined and drove adoption of the 'Testing Trophy' architectural standard, shifting the organization from E2E-heavy validation toward scalable unit, integration, and contract testing",
+      "Architected an LLM-powered Agentic Platform using MCP-based agents to automate the testing lifecycle across multi-language codebases (Go, Python, JS), driving autonomy across 43+ engineering squads",
+      "Engineered an enterprise-grade Contract Testing infrastructure using Pact Community on AWS, replacing brittle E2E dependencies with scalable consumer-driven contract validation",
+      "Designed and implemented 7 specialized GenAI agents using MCP-based workflows to automate contract discovery, test generation, publishing, and CI/CD integration across multi-language services",
+      "Built a centralized Quality & Observability Platform integrating AI-driven test generation, CI execution, and SonarCloud/GitHub telemetry, providing quality visibility across 1,300+ microservices",
+      "Led Zero-to-coverage enablement initiative, coaching engineering squads with no testing background to achieve 80-100% code coverage through autonomous, AI-driven generation workflows"
     ],
     "technologies": [
       "Python",
       "Go",
       "JavaScript",
-      "AWS ECS",
+      "AWS",
       "Pact",
-      "LLM/MCP",
       "GitHub Actions",
-      "SonarCloud",
-      "Ollama"
+      "MCP",
+      "LLMs"
     ],
     "achievements": [
       "80-100% code coverage across 43+ engineering squads",
