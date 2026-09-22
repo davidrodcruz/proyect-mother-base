@@ -1,4 +1,6 @@
 ---
+import profileData from '../../data/api/profile.json';
+
 interface NavigationItem {
   label: string;
   path: string;
@@ -10,14 +12,15 @@ interface Props {
 }
 
 const { navigation, currentPath } = Astro.props;
+const profile = profileData as any;
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-base/90 backdrop-blur-md border-b border-border/20">
   <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <a href="/" class="font-heading text-lg text-accent phosphor-glow hover:text-glow transition-all">
-        DAVID RODRÍGUEZ DE LA CRUZ
-        <span class="block text-sm">A.K.A (Davo)</span>
+        {profile.name}
+        <span class="block text-sm">A.K.A ({profile.alias})</span>
       </a>
 
       {/* Desktop navigation */}
