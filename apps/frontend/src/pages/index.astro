@@ -31,14 +31,9 @@ const projects = projectsList.sort((a: any, b: any) => {
 });
 
 const dossierData = {
-  summary: "Senior SDET and Quality Engineer with 6 years of experience building test infrastructure, quality platforms, and developer enablement solutions for large-scale fintech systems. Specialized in distributed test execution, contract testing, CI/CD, and AI-driven engineering.",
-  stats: [
-    { value: '6+', label: 'Years' },
-    { value: '43+', label: 'Squads' },
-    { value: '1,300+', label: 'Microservices' },
-    { value: '90%', label: 'Cycle Reduction' },
-  ],
-  work_status: profile?.work_status || 'Mexican citizen eligible for TN status under USMCA/CUSMA for qualifying professional roles.',
+  summary: profile.summary_short,
+  stats: profile.highlights,
+  work_status: profile?.work_status,
 };
 
 ---
@@ -167,29 +162,21 @@ const dossierData = {
       )}
 
       {/* Quick Stats */}
-      <div class="mb-16">
-        <h3 class="font-heading text-xl font-bold text-headline mb-6 flex items-center gap-2">
-          <span class="text-meta">//</span> Quick Stats
-        </h3>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="text-center p-4 bg-card/80 rounded-lg hud-border">
-            <div class="text-2xl font-heading font-bold text-accent">6+</div>
-            <div class="text-meta text-xs uppercase tracking-wider">Years</div>
-          </div>
-          <div class="text-center p-4 bg-card/80 rounded-lg hud-border">
-            <div class="text-2xl font-heading font-bold text-accent">43+</div>
-            <div class="text-meta text-xs uppercase tracking-wider">Squads</div>
-          </div>
-          <div class="text-center p-4 bg-card/80 rounded-lg hud-border">
-            <div class="text-2xl font-heading font-bold text-accent">1,300+</div>
-            <div class="text-meta text-xs uppercase tracking-wider">Microservices</div>
-          </div>
-          <div class="text-center p-4 bg-card/80 rounded-lg hud-border">
-            <div class="text-2xl font-heading font-bold text-accent">90%</div>
-            <div class="text-meta text-xs uppercase tracking-wider">Cycle Reduction</div>
+      {profile?.highlights && profile.highlights.length > 0 && (
+        <div class="mb-16">
+          <h3 class="font-heading text-xl font-bold text-headline mb-6 flex items-center gap-2">
+            <span class="text-meta">//</span> Quick Stats
+          </h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {profile.highlights.map((stat: any) => (
+              <div class="text-center p-4 bg-card/80 rounded-lg hud-border">
+                <div class="text-2xl font-heading font-bold text-accent phosphor-glow">{stat.value}</div>
+                <div class="text-meta text-xs uppercase tracking-wider">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
+      )}
 
       {/* Work Status */}
       {profile?.work_status && (
@@ -204,25 +191,21 @@ const dossierData = {
       )}
 
       {/* Philosophy */}
-      <div>
-        <h3 class="font-heading text-xl font-bold text-headline mb-6 flex items-center gap-2">
-          <span class="text-meta">//</span> Philosophy
-        </h3>
-        <div class="space-y-4">
-          <blockquote class="border-l-2 border-accent pl-6">
-            <p class="text-body text-lg italic">
-              "Quality is not an act, it is a habit."
-            </p>
-            <cite class="text-meta text-sm">- Aristotle</cite>
-          </blockquote>
-          <blockquote class="border-l-2 border-meta pl-6">
-            <p class="text-body text-lg italic">
-              "I build the infrastructure that enables better software quality not just test cases."
-            </p>
-            <cite class="text-meta text-sm">- Davo</cite>
-          </blockquote>
+      {profile?.quotes && profile.quotes.length > 0 && (
+        <div>
+          <h3 class="font-heading text-xl font-bold text-headline mb-6 flex items-center gap-2">
+            <span class="text-meta">//</span> Philosophy
+          </h3>
+          <div class="space-y-4">
+            {profile.quotes.map((quote: any) => (
+              <blockquote class={`border-l-2 ${quote.accent === 'meta' ? 'border-meta' : 'border-accent'} pl-6`}>
+                <p class="text-body text-lg italic">{quote.text}</p>
+                <cite class="text-meta text-sm">- {quote.attribution}</cite>
+              </blockquote>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   </section>
 
@@ -239,7 +222,7 @@ const dossierData = {
           EXPERIENCE
         </h2>
         <p class="text-body text-lg max-w-2xl mx-auto">
-          My professional journey in QA Automation and Test Engineering.
+          {profile.section_copy?.experience}
         </p>
       </div>
 
@@ -323,7 +306,7 @@ const dossierData = {
           SKILLS
         </h2>
         <p class="text-body text-lg max-w-2xl mx-auto">
-          Technical skills and expertise accumulated over 5+ years in QA Automation.
+          {profile.section_copy?.skills.replace('{{years}}', String(profile.years_experience))}
         </p>
       </div>
 
@@ -463,7 +446,7 @@ const dossierData = {
           
           <div class="space-y-4 mb-8">
             <a
-              href={`mailto:${profile?.social?.email || 'drc412@gmail.com'}`}
+              href={`mailto:${profile?.social?.email}`}
               class="flex items-center gap-4 p-4 bg-accent/5 rounded-lg hud-border border-accent/30 hover:shadow-[0_0_12px_rgba(147,198,208,0.2)] transition-all relative"
             >
               <div class="w-10 h-10 rounded-lg bg-accent/15 flex items-center justify-center text-accent shrink-0">
@@ -482,7 +465,7 @@ const dossierData = {
             </a>
 
             <a
-              href={`mailto:${profile?.social?.secondaryEmail || 'drc412@hotmail.com'}`}
+              href={`mailto:${profile?.social?.secondaryEmail}`}
               class="flex items-center gap-4 p-4 bg-card/60 rounded-lg hud-border hover:shadow-[0_0_10px_rgba(147,198,208,0.1)] transition-all opacity-80 hover:opacity-100"
             >
               <div class="w-10 h-10 rounded-lg bg-card/80 flex items-center justify-center text-body/50 shrink-0">
@@ -498,7 +481,7 @@ const dossierData = {
             </a>
 
             <a
-              href={profile?.social?.linkedin || 'https://linkedin.com/in/davo'}
+              href={profile.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               class="flex items-center gap-4 p-4 bg-card/80 rounded-lg hud-border hover:shadow-[0_0_10px_rgba(147,198,208,0.15)] transition-all"
@@ -517,7 +500,7 @@ const dossierData = {
             </a>
 
             <a
-              href={profile?.social?.github || 'https://github.com/davidrodcruz'}
+              href={profile.social.github}
               target="_blank"
               rel="noopener noreferrer"
               class="flex items-center gap-4 p-4 bg-card/80 rounded-lg hud-border hover:shadow-[0_0_10px_rgba(147,198,208,0.15)] transition-all"

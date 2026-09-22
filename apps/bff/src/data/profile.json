@@ -41,5 +41,28 @@
     "Strategic Thinking for Scalable Testing Platforms",
     "AI-driven Engineering & Continuous Improvement"
   ],
-  "work_status": "Mexican citizen eligible for TN status under USMCA/CUSMA for qualifying professional roles."
+  "work_status": "Mexican citizen eligible for TN status under USMCA/CUSMA for qualifying professional roles.",
+  "summary_short": "Senior SDET and Quality Engineer with 6 years of experience building test infrastructure, quality platforms, and developer enablement solutions for large-scale fintech systems.",
+  "highlights": [
+    { "value": "6+", "label": "Years" },
+    { "value": "43+", "label": "Squads" },
+    { "value": "1,300+", "label": "Microservices" },
+    { "value": "90%", "label": "Cycle Reduction" }
+  ],
+  "quotes": [
+    {
+      "text": "Quality is not an act, it is a habit.",
+      "attribution": "Aristotle",
+      "accent": "accent"
+    },
+    {
+      "text": "I build the infrastructure that enables better software quality, not just test cases.",
+      "attribution": "Davo",
+      "accent": "meta"
+    }
+  ],
+  "section_copy": {
+    "experience": "My professional journey in QA Automation and Test Engineering.",
+    "skills": "Technical skills and expertise accumulated over {{years}}+ years in QA Automation."
+  }
 }

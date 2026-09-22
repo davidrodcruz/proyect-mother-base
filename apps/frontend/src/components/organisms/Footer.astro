@@ -1,5 +1,8 @@
 ---
+import profileData from '../../data/api/profile.json';
+
 const currentYear = new Date().getFullYear();
+const profile = profileData as any;
 ---
 
 <footer class="border-t border-border/20 bg-base/90 backdrop-blur-md">
@@ -13,17 +16,17 @@ const currentYear = new Date().getFullYear();
 
       <div class="mb-6">
         <a href="/" class="font-heading text-xl text-accent phosphor-glow hover:text-glow transition-all block">
-          DAVID RODRÍGUEZ DE LA CRUZ
-          <span class="block text-lg">A.K.A (Davo)</span>
+          {profile.name}
+          <span class="block text-lg">A.K.A ({profile.alias})</span>
         </a>
         <p class="text-meta text-sm mt-2">
-          ISTQB® Certified
+          {profile.tagline}
         </p>
       </div>
 
       <div class="flex gap-6 mb-8">
         <a
-          href="https://github.com/davidrodcruz"
+          href={profile.social.github}
           target="_blank"
           rel="noopener noreferrer"
           class="text-meta hover:text-accent transition-colors"
@@ -35,7 +38,7 @@ const currentYear = new Date().getFullYear();
           </svg>
         </a>
         <a
-          href="https://linkedin.com/in/davo"
+          href={profile.social.linkedin}
           target="_blank"
           rel="noopener noreferrer"
           class="text-meta hover:text-accent transition-colors"
