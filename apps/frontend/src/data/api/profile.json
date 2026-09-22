@@ -1,12 +1,12 @@
 {
   "name": "David Rodríguez de la Cruz",
   "alias": "Davo",
-  "title": "Senior SDET | ISTQB® Certified",
+  "title": "Senior SDET | Quality Architecture & Test Infrastructure | AI-Driven Engineering",
   "tagline": "Building Quality Architecture for Fintech at Scale",
   "avatar": "/avatar.png",
   "location": "Mexico City, Mexico (USMCA/CUSMA Eligible)",
-  "years_experience": 5,
-  "summary": "Senior SDET with 5+ years building and scaling quality engineering platforms, defining quality architecture standards, and scaling CI/CD pipelines for large-scale fintech microservices systems. Proven track record of eliminating production incidents through a 90% reduction in release cycle time and a 70% improvement in pre-production defect detection. Experienced in test infrastructure engineering, cross-team mentorship, and testing governance from contract testing strategy to distributed execution infrastructure on AWS.",
+  "years_experience": 6,
+  "summary": "Senior SDET and Quality Engineer with 6 years of experience building test infrastructure, quality platforms, and developer enablement solutions for large-scale fintech systems. Specialized in distributed test execution, contract testing, CI/CD, and AI-driven engineering. Built and scaled quality solutions across 1,300+ microservices and 43+ engineering squads, including AWS-based infrastructure, MCP-powered AI agents, and organization-wide testing standards.",
   "social": {
     "github": "https://github.com/davidrodcruz",
     "linkedin": "https://linkedin.com/in/davidrodcruz",
@@ -32,12 +32,14 @@
     "location": "Zacatecas, Zac, Mexico"
   },
   "soft_skills": [
-    "Technical Leadership in Quality Architecture & Distributed Systems",
-    "Advanced Problem Solving & Root Cause Analysis",
+    "Technical Leadership in Quality Architecture & Test Infrastructure",
+    "Advanced Strategic Problem Solving & Root Cause Analysis",
+    "Developer Enablement & Technical Mentorship",
+    "Cross-team Influence & Engineering Standards Adoption",
     "End-to-End Ownership of Quality & Reliability",
-    "Cross-team Influence in Engineering Standards Adoption",
     "Mentorship in Automation, Testing & AI-driven Workflows",
-    "Strategic Thinking for Scalable Testing Platforms"
+    "Strategic Thinking for Scalable Testing Platforms",
+    "AI-driven Engineering & Continuous Improvement"
   ],
-  "work_status": "Mexican citizen eligible for USMCA/CUSMA TN Professional Work Permit (LMIA-exempt, no sponsorship required)"
+  "work_status": "Mexican citizen eligible for TN status under USMCA/CUSMA for qualifying professional roles."
 }

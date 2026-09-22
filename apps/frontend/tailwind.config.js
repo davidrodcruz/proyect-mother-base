@@ -15,7 +15,7 @@ export default {
           dark: '#7BB8C4',
         },
         headline: '#D1E2E4',
-        body: '#9BB5A9',
+        body: '#CCE8D9',
         meta: '#588E77',
         danger: '#FF0000',
       },

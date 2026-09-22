@@ -35,7 +35,8 @@
         { "name": "Integration Testing", "level": "expert", "years": 5 },
         { "name": "Contract Testing", "level": "expert", "years": 3 },
         { "name": "E2E Testing", "level": "advanced", "years": 5 },
-        { "name": "Risk-based Testing", "level": "advanced", "years": 5 }
+        { "name": "Risk-based Testing", "level": "advanced", "years": 5 },
+        { "name": "Test Data Management", "level": "advanced", "years": 5 }
       ]
     },
     {
