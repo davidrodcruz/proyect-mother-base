@@ -1,12 +1,12 @@
 {
   "name": "David Rodríguez de la Cruz",
   "alias": "Davo",
-  "title": "Senior SDET | Quality Architecture & Test Infrastructure | AI-Driven Engineering",
+  "title": "QA Architect | Test Strategy & Test Infrastructure | AI-Driven Engineering",
   "tagline": "Building Quality Architecture for Fintech at Scale",
   "avatar": "/avatar.png",
   "location": "Mexico City, Mexico (USMCA/CUSMA Eligible)",
   "years_experience": 6,
-  "summary": "Senior SDET and Quality Engineer with 6 years of experience building test infrastructure, quality platforms, and developer enablement solutions for large-scale fintech systems. Specialized in distributed test execution, contract testing, CI/CD, and AI-driven engineering. Built and scaled quality solutions across 1,300+ microservices and 43+ engineering squads, including AWS-based infrastructure, MCP-powered AI agents, and organization-wide testing standards.",
+  "summary": "QA Architect with 6+ years of experience in software engineering and quality engineering, specializing in test architecture, automation strategy, and AI-driven engineering. Own backend, mobile, and web test automation strategy at Stori, modernizing test infrastructure and integrating AI-assisted workflows into CI/CD. Architected AWS-based contract testing with Pact, developed 10 specialized AI agents, and delivered production-grade event integrity solutions. Driving quality engineering standards and developer enablement across 43+ engineering squads.",
   "social": {
     "github": "https://github.com/davidrodcruz",
     "linkedin": "https://linkedin.com/in/davidrodcruz",
@@ -28,25 +28,23 @@
   "education": {
     "degree": "Bachelor of Science in Software Engineering",
     "institution": "Universidad Autonoma de Zacatecas",
-    "period": "08/2016 – 08/2021",
+    "period": "08/2016 – 08/2022",
     "location": "Zacatecas, Zac, Mexico"
   },
   "soft_skills": [
     "Technical Leadership in Quality Architecture & Test Infrastructure",
     "Advanced Strategic Problem Solving & Root Cause Analysis",
-    "Developer Enablement & Technical Mentorship",
+    "Developer Enablement & Mentorship in Automation, Testing & AI-driven Workflows",
     "Cross-team Influence & Engineering Standards Adoption",
-    "End-to-End Ownership of Quality & Reliability",
-    "Mentorship in Automation, Testing & AI-driven Workflows",
     "Strategic Thinking for Scalable Testing Platforms",
     "AI-driven Engineering & Continuous Improvement"
   ],
   "work_status": "Mexican citizen eligible for TN status under USMCA/CUSMA for qualifying professional roles.",
-  "summary_short": "Senior SDET and Quality Engineer with 6 years of experience building test infrastructure, quality platforms, and developer enablement solutions for large-scale fintech systems.",
+  "summary_short": "QA Architect with 6+ years of experience specializing in test architecture, automation strategy, and AI-driven engineering. Own backend, mobile, and web test automation strategy at Stori, driving quality standards across 43+ engineering squads.",
   "highlights": [
     { "value": "6+", "label": "Years" },
     { "value": "43+", "label": "Squads" },
-    { "value": "1,300+", "label": "Microservices" },
+    { "value": "10", "label": "AI Agents" },
     { "value": "90%", "label": "Cycle Reduction" }
   ],
   "quotes": [

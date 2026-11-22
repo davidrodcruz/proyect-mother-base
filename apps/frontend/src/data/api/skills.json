@@ -45,7 +45,8 @@
         { "name": "Agentic Workflows (MCP)", "level": "advanced", "years": 1 },
         { "name": "AWS Bedrock", "level": "intermediate", "years": 1 },
         { "name": "Cursor / Claude Code", "level": "advanced", "years": 1 },
-        { "name": "Ollama / Gemma (Local AI)", "level": "intermediate", "years": 1 }
+        { "name": "Local AI Inference (llama.cpp)", "level": "intermediate", "years": 1 },
+        { "name": "Skill Design for Autonomous Test Generation", "level": "advanced", "years": 1 }
       ]
     },
     {

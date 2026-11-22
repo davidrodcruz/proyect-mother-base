@@ -42,7 +42,7 @@ const dossierData = {
   {/* ═══════════════════════════════════════════════════════════════
        SECTION 1: HERO — WELCOME TO MOTHER BASE
        ═══════════════════════════════════════════════════════════════ */}
-  <section id="home" class="min-h-screen flex items-start lg:items-center relative overflow-visible lg:overflow-hidden pt-28 lg:pt-0">
+  <section id="home" class="min-h-screen flex items-start relative overflow-visible lg:overflow-hidden pt-28 lg:pt-32 pb-16">
     <div class="absolute inset-0 grid-pattern" />
 
     <div class="relative z-10 w-full px-4 sm:px-6 lg:px-8 xl:px-12 py-12 lg:py-0">
@@ -60,6 +60,10 @@ const dossierData = {
 
             <p class="font-heading text-xl text-body">
               The place for DAVO frameworks
+            </p>
+
+            <p class="font-heading text-[15px] md:text-[17px] text-accent tracking-[0.08em] mt-4 phosphor-glow">
+              {profile.title}
             </p>
           </div>
         </div>
@@ -226,10 +230,8 @@ const dossierData = {
         </p>
       </div>
 
-      <div class="relative">
-        <div class="absolute left-0 md:left-1/2 w-0.5 h-full bg-border/30 transform -translate-x-1/2" />
-
-        <div class="space-y-8">
+      <div class="relative max-w-3xl mx-auto">
+        <div>
           {experience.map((exp: any, index: number) => (
             <TimelineEntry
               company={exp.company}

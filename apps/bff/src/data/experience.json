@@ -2,38 +2,69 @@
   {
     "id": "exp-001",
     "company": "Stori",
-    "role": "Sr. SDET (Quality Architecture & Tooling)",
+    "role": "QA Architect (Quality Architecture & Tooling)",
     "period": {
-      "start": "2025-01",
+      "start": "2026-01",
       "end": null
     },
     "location": "Mexico City, Mexico",
     "responsibilities": [
-      "Defined and drove adoption of the 'Testing Trophy' architectural standard, shifting the organization from E2E-heavy validation toward scalable unit, integration, and contract testing",
-      "Architected an LLM-powered Agentic Platform using MCP-based agents to automate the testing lifecycle across multi-language codebases (Go, Python, JS), driving autonomy across 43+ engineering squads",
-      "Engineered an enterprise-grade Contract Testing infrastructure using Pact Community on AWS, replacing brittle E2E dependencies with scalable consumer-driven contract validation",
-      "Designed and implemented 7 specialized GenAI agents using MCP-based workflows to automate contract discovery, test generation, publishing, and CI/CD integration across multi-language services",
-      "Built a centralized Quality & Observability Platform integrating AI-driven test generation, CI execution, and SonarCloud/GitHub telemetry, providing quality visibility across 1,300+ microservices",
-      "Led Zero-to-coverage enablement initiative, coaching engineering squads with no testing background to achieve 80-100% code coverage through autonomous, AI-driven generation workflows"
+      "Defined cross-team testing standards with Stori's Software Architect, using the Testing Trophy to guide adoption of unit, integration, and contract testing",
+      "Own test automation and its strategy across backend, mobile, and web; redesigned existing frameworks to support AI-assisted test creation and maintenance, improved execution performance, and integrated automated testing into developers' day-to-day workflows",
+      "Took Stori's event integrity middleware from prototype to production, delivering v2 so CRM could define event contracts and engineering teams could detect missing required properties in payloads sent to Braze and other platforms",
+      "Built an AI Agent for pull requests that blocks removal of events still marked active in the middleware; integrated incident.io to alert teams to event integrity issues in production",
+      "Designed shared AWS infrastructure for consumer-driven contract testing with Pact, enabling engineering teams to verify service compatibility in CI",
+      "Architected and implemented 10 specialized AI agents, designing their orchestration logic, instructions, and workflows to automate contract testing, unit test generation, CI/CD configuration, and event migration",
+      "Built an observability platform to track test coverage across 97 repositories using SonarCloud and GitHub data",
+      "Built an AI-assisted release notes workflow for the Stori mobile app that compares release branches, classifies changes by user impact, and drafts notes for the changes most relevant to users",
+      "Automated Slack reminders in Go to prompt engineering teams to run their tests"
     ],
     "technologies": [
       "Python",
       "Go",
-      "JavaScript",
       "AWS",
       "Pact",
-      "GitHub Actions",
       "MCP",
-      "LLMs"
+      "GitHub Actions",
+      "SonarCloud",
+      "incident.io"
     ],
     "achievements": [
-      "80-100% code coverage across 43+ engineering squads",
-      "1,300+ microservices monitored",
-      "7 GenAI Agents deployed for contract compliance"
+      "10 specialized AI agents deployed for test automation",
+      "Test coverage visibility across 97 repositories",
+      "Event integrity middleware v2 shipped to production"
     ]
   },
   {
     "id": "exp-002",
+    "company": "Stori",
+    "role": "Sr. SDET",
+    "period": {
+      "start": "2025-01",
+      "end": "2026-01"
+    },
+    "location": "Mexico City, Mexico",
+    "responsibilities": [
+      "Led and mentored 11 QA engineers in designing and implementing backend regression suites with Stori's internal backend automation framework, helping them apply shared BDD patterns across their teams",
+      "Expanded and optimized the internal backend automation framework by improving suite execution and adding reusable components that made it easier for teams to write regression tests for APIs, AWS services, and databases",
+      "Integrated the framework with Stori internal web tooling, enabling teams to launch automated test suites from a web interface and stakeholders to track execution progress",
+      "Integrated backend regression suites into GitHub Actions, enabling engineering teams to run automated tests as part of their CI pipelines",
+      "Centralized test reporting with Allure, giving teams a consistent way to review regression results and investigate failures"
+    ],
+    "technologies": [
+      "Python",
+      "Behave",
+      "Allure",
+      "AWS",
+      "GitHub Actions"
+    ],
+    "achievements": [
+      "11 QA engineers led and mentored",
+      "Backend regression suites integrated into GitHub Actions CI"
+    ]
+  },
+  {
+    "id": "exp-003",
     "company": "Stori",
     "role": "Sr. Software QA Engineer",
     "period": {
@@ -60,9 +91,9 @@
     ]
   },
   {
-    "id": "exp-003",
+    "id": "exp-004",
     "company": "Stori",
-    "role": "Mid Software QA Engineer",
+    "role": "Software QA Engineer",
     "period": {
       "start": "2023-01",
       "end": "2024-08"
@@ -86,7 +117,7 @@
     ]
   },
   {
-    "id": "exp-004",
+    "id": "exp-005",
     "company": "Stori",
     "role": "Jr. Software QA Engineer",
     "period": {
@@ -109,7 +140,7 @@
     ]
   },
   {
-    "id": "exp-005",
+    "id": "exp-006",
     "company": "Titanium Solutions",
     "role": "Software QA Engineer (API Automation)",
     "period": {
@@ -132,7 +163,7 @@
     ]
   },
   {
-    "id": "exp-006",
+    "id": "exp-007",
     "company": "Local Government Office",
     "role": "Software Developer and Tester",
     "period": {
