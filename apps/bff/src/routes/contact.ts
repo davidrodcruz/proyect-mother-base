@@ -9,13 +9,8 @@ interface ContactBody {
 }
 
 export async function contactRoutes(fastify: FastifyInstance) {
-  // Rate limiting for contact form (5 per hour)
-  fastify.addHook('onRequest', async (request, reply) => {
-    if (request.url === '/api/v1/contact' && request.method === 'POST') {
-      // Additional rate limiting for contact form
-      // This is handled by the global rate limiter, but we add extra checks
-    }
-  });
+  // Rate limiting is handled by the global rate limiter configured in index.ts.
+  // (A previous onRequest hook here was a no-op and has been removed.)
 
   fastify.post('/contact', async (request, reply) => {
     const body = request.body as ContactBody;
