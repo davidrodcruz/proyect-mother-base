@@ -13,7 +13,11 @@ interface Props {
 
 const { company, role, period, responsibilities, technologies, achievements, index } = Astro.props;
 
-const isEven = index % 2 === 0;
+// Zigzag: even entries hug the left (line runs down the left edge), odd hug
+// the right. Each row draws its own segment of the snake: vertical down the
+// card edge + horizontal across the gap, with a rounded elbow. Together the
+// segments form one continuous path that wraps the whole experience.
+const isLeft = index % 2 === 0;
 
 function formatDate(dateStr: string | null | undefined) {
   if (!dateStr || dateStr === 'present') return 'Present';
@@ -25,12 +29,10 @@ function formatDate(dateStr: string | null | undefined) {
 }
 ---
 
-<div class={`relative flex flex-col md:flex-row items-start ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-  {/* Timeline dot */}
-  <div class="absolute left-0 md:left-1/2 w-3 h-3 bg-accent rounded-full transform -translate-x-[5px] md:-translate-x-1.5 mt-6 z-10 shadow-[0_0_10px_rgba(147,198,208,0.5)]" />
+<div class={`stair-row ${isLeft ? 'stair-left' : 'stair-right'}`}>
+  <div class="stair-dot" />
 
-  {/* Content */}
-  <div class={`w-full md:w-1/2 ${isEven ? 'md:pr-12' : 'md:pl-12'} pl-8 md:pl-0`}>
+  <div class="stair-card">
     <div class="bg-card backdrop-blur-sm rounded-lg hud-border p-6 hover:shadow-[0_0_15px_rgba(147,198,208,0.15)] transition-all">
       <div class="flex items-center gap-2 mb-2">
         <span class="text-headline text-sm tracking-[0.2em] uppercase font-heading text-shadow-glow">
@@ -77,3 +79,105 @@ function formatDate(dateStr: string | null | undefined) {
     </div>
   </div>
 </div>
+
+<style>
+  .stair-row {
+    position: relative;
+    /* padding-top == margin-bottom keeps the horizontal connector perfectly
+       centered between consecutive cards */
+    padding-top: 28px;
+    margin-bottom: 28px;
+  }
+  .stair-row:last-child {
+    margin-bottom: 0;
+  }
+
+  /* The snake lives in a gutter OUTSIDE the card (G = 18px of clearance)
+     while the card takes the full row width. */
+  .stair-card {
+    width: 100%;
+  }
+
+  /* Snake segment: one path = vertical down the gutter beside the card +
+     horizontal across the gap to the opposite gutter, rounded elbow. */
+  .stair-row::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: -28px;
+    width: calc(100% + 36px);
+    border-color: rgba(147, 198, 208, 0.4);
+    border-width: 2px;
+    border-style: solid;
+  }
+  .stair-left::before {
+    left: -18px;
+    border-right: none;
+    border-top: none;
+    border-bottom-left-radius: 20px;
+  }
+  .stair-right::before {
+    right: -18px;
+    border-left: none;
+    border-top: none;
+    border-bottom-right-radius: 20px;
+  }
+
+  /* Last entry: no horizontal crossing — the path just ends with a terminal dot. */
+  .stair-row:last-child::before {
+    bottom: -14px;
+    border-bottom: none;
+    border-radius: 0;
+  }
+  .stair-row:last-child::after {
+    content: "";
+    position: absolute;
+    bottom: -19px;
+    width: 7px;
+    height: 7px;
+    border-radius: 9999px;
+    background: rgba(147, 198, 208, 0.7);
+  }
+  .stair-left:last-child::after {
+    left: -21px;
+  }
+  .stair-right:last-child::after {
+    right: -21px;
+  }
+
+  /* Node dot centered on the gutter line at each entry's elbow. */
+  .stair-dot {
+    position: absolute;
+    top: -6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 9999px;
+    background: #93C6D0;
+    box-shadow: 0 0 10px rgba(147, 198, 208, 0.6);
+    z-index: 10;
+  }
+  .stair-left .stair-dot {
+    left: -23px;
+  }
+  .stair-right .stair-dot {
+    right: -23px;
+  }
+
+  @media (max-width: 640px) {
+    .stair-row::before {
+      width: calc(100% + 24px);
+    }
+    .stair-left::before {
+      left: -12px;
+    }
+    .stair-right::before {
+      right: -12px;
+    }
+    .stair-left .stair-dot {
+      left: -17px;
+    }
+    .stair-right .stair-dot {
+      right: -17px;
+    }
+  }
+</style>
