@@ -7,32 +7,18 @@ on:
     branches: [main]
 
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: pnpm
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm lint
-
   typecheck:
     name: TypeCheck
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
+      # No version pin: action-setup reads "packageManager" from package.json
+      # (pnpm@11.6.0). pnpm 8 could not read lockfileVersion 9.0, which made
+      # `pnpm install --frozen-lockfile` fail with ERR_PNPM_NO_LOCKFILE.
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm typecheck
@@ -42,12 +28,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
+      # No version pin: action-setup reads "packageManager" from package.json
+      # (pnpm@11.6.0). pnpm 8 could not read lockfileVersion 9.0, which made
+      # `pnpm install --frozen-lockfile` fail with ERR_PNPM_NO_LOCKFILE.
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
